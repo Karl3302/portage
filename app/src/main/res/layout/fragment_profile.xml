@@ -1,0 +1,148 @@
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/profilePublicBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_slide_button"
+                android:drawableLeft="@drawable/ic_portrait_black_24dp"
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_ababab_24dp"
+                android:gravity="start"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="13dp"
+                android:text="@string/title_manage_profile_public"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/visibilityBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <Button
+                android:id="@+id/visibilityBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_slide_button"
+                android:drawableLeft="@drawable/ic_visibility_off_black_24dp"
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_ababab_24dp"
+                android:gravity="start"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="13dp"
+                android:text="@string/title_manage_visibility"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/bankAccountBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profilePublicBtn" />
+
+            <Button
+                android:id="@+id/bankAccountBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_slide_button"
+                android:drawableLeft="@drawable/ic_credit_card_black_24dp"
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_ababab_24dp"
+                android:gravity="start"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="13dp"
+                android:text="@string/title_manage_bank_account"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/userSettingBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/visibilityBtn" />
+
+            <Button
+                android:id="@+id/userSettingBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_slide_button"
+                android:drawableLeft="@drawable/ic_settings_black_24dp"
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_ababab_24dp"
+                android:gravity="start"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="13dp"
+                android:text="@string/title_manage_settings"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/suggestionBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bankAccountBtn" />
+
+            <Button
+                android:id="@+id/suggestionBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_slide_button"
+                android:drawableLeft="@drawable/ic_feedback_black_24dp"
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_ababab_24dp"
+                android:gravity="start"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="13dp"
+                android:text="@string/title_manage_feedback"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/descriptionParamTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userSettingBtn" />
+
+            <TextView
+                android:id="@+id/descriptionParamTextView"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:gravity="center"
+                android:text="Description de paramètre"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/suggestionBtn" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.constraint.ConstraintLayout>

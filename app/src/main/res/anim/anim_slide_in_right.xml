@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Animation enter the screen from right side -->
+<set xmlns:android="http://schemas.android.com/apk/res/android" >
+    <translate
+        android:duration="@integer/duration_horizontal_full_animation"
+        android:fromXDelta="100%p"
+        android:toXDelta="0%p" />
+    <!-- fade
+    <alpha
+        android:duration="@integer/slide_in_full_horizontal_duration"
+        android:fromAlpha="0.5"
+        android:toAlpha="1.0" />-->
+</set>

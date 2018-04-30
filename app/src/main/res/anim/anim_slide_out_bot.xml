@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Animation: exit the screen from bottom side -->
+<set xmlns:android="http://schemas.android.com/apk/res/android" >
+    <translate
+        android:duration="@integer/duration_vertical_full_animation"
+        android:fromYDelta="0%p"
+        android:toYDelta="100%p" >
+    </translate>
+    <!-- fade -->
+    <alpha
+        android:duration="@integer/duration_vertical_full_animation"
+        android:fromAlpha="1.0"
+        android:toAlpha="0.0" />
+</set>

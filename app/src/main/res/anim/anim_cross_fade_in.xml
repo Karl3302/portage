@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Animation: exit the screen from right side -->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <alpha
+        android:duration="@integer/duration_cross_fade_half_animation"
+        android:startOffset="@integer/duration_cross_fade_half_animation"
+        android:fromAlpha="0"
+        android:toAlpha="1.0" />
+</set>

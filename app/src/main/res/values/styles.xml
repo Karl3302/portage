@@ -1,0 +1,70 @@
+<!--
+  ~ Created by Hang on 18-4-12 下午3:19
+  ~ Copyright (c) 2018 . All rights reserved.
+  ~ Last modified 18-4-12 下午12:37
+  -->
+
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Theme.Entrance" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/Animation.SlideHorizontal</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
+        <item name="colorPrimary">@color/zeprofileGreen</item>
+        <item name="colorPrimaryDark">@color/zeprofileDarkGreen</item>
+        <item name="colorAccent">@color/zeprofileOrange</item>
+    </style>
+
+    <style name="Theme.DialogHalfScreen" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowAnimationStyle">@style/Animation.SlideVertical</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="colorPrimary">@color/zeprofileGreen</item>
+        <item name="colorPrimaryDark">@color/zeprofileDarkGreen</item>
+        <item name="colorAccent">@color/zeprofileOrange</item>
+    </style>
+
+    <style name="Theme.ActivityWithActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowAnimationStyle">@style/Animation.SlideHorizontal</item>
+        <item name="colorPrimary">@color/zeprofileGreen</item>
+        <item name="colorPrimaryDark">@color/zeprofileDarkGreen</item>
+        <item name="colorAccent">@color/zeprofileOrange</item>
+    </style>
+
+    <style name="Theme.ActivityWithoutActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/Animation.SlideHorizontal</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
+        <item name="colorPrimary">@color/zeprofileGreen</item>
+        <item name="colorPrimaryDark">@color/zeprofileDarkGreen</item>
+        <item name="colorAccent">@color/zeprofileOrange</item>
+    </style>
+
+
+    <!-- Animation Styles -->
+    <style name="Animation.SlideHorizontal" parent="@android:style/Animation.Activity">
+        <!--A打开并进入B，B的出现动画-->
+        <item name="android:activityOpenEnterAnimation">@anim/anim_slide_in_right</item>
+        <!--A打开并进入B，A的消失动画-->
+        <item name="android:activityOpenExitAnimation">@anim/anim_slide_out_left</item>
+        <!--A关闭并回到B，B的出现动画-->
+        <item name="android:activityCloseEnterAnimation">@anim/anim_slide_in_left</item>
+        <!--A关闭并回到B，A的消失动画-->
+        <item name="android:activityCloseExitAnimation">@anim/anim_slide_out_right</item>
+    </style>
+
+    <style name="Animation.SlideVertical" parent="@android:style/Animation.Activity">
+        <!--A打开并进入B，B的出现动画-->
+        <item name="android:activityOpenEnterAnimation">@anim/anim_slide_in_bot</item>
+        <!--A打开并进入B，A的消失动画-->
+        <!--A关闭并回到B，B的出现动画-->
+        <!--A关闭并回到B，A的消失动画-->
+        <item name="android:activityCloseExitAnimation">@anim/anim_slide_out_bot</item>
+    </style>
+
+    <style name="Animation.CrossFade" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/anim_cross_fade_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_cross_fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_cross_fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/anim_cross_fade_out</item>
+    </style>
+
+</resources>

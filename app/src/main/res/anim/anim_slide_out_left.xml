@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Animation exit the screen from left side -->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+    <translate
+        android:duration="@integer/slide_horizontal_duration"
+        android:fromXDelta="0%p"
+        android:interpolator="@android:anim/accelerate_interpolator"
+        android:startOffset="@integer/slide_start_sacle_offset"
+        android:toXDelta="-100%p" />
+     fade -->
+    <alpha
+        android:duration="@integer/duration_horizontal_full_animation"
+        android:fromAlpha="1.0"
+        android:toAlpha="0.0" />
+</set>

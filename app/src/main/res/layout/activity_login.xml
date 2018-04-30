@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by Hang on 18-4-12 下午3:19
+  ~ Copyright (c) 2018 . All rights reserved.
+  ~ Last modified 18-4-11 下午5:30
+  -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    tools:context=".Login">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/appLogoLoginViw"
+            android:layout_width="230dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/text_app_logo_description"
+            app:layout_constraintBottom_toTopOf="@+id/emailTextField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:srcCompat="@drawable/zeprofilelogorgb" />
+
+        <EditText
+            android:id="@+id/emailTextField"
+            android:layout_width="230dp"
+            android:layout_height="38dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_textfield"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/text_emailTextField"
+            android:inputType="textEmailAddress"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/passwordTextField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appLogoLoginViw" />
+
+        <EditText
+            android:id="@+id/passwordTextField"
+            android:layout_width="230dp"
+            android:layout_height="38dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_textfield"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/text_passwordTextField"
+            android:inputType="textPassword"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/forgetPasswordBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailTextField" />
+
+        <Button
+            android:id="@+id/forgetPasswordBtn"
+            android:layout_width="160dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_transparent_button"
+            android:text="@string/text_forgetPasswordBtn"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/zeprofileOrange"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/loginBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passwordTextField" />
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:background="@drawable/bg_rounded_button"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/text_loginBtn"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/signUpBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forgetPasswordBtn" />
+
+        <Button
+            android:id="@+id/signUpBtn"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/bg_transparent_button"
+            android:text="@string/text_signUpBtn"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/zeprofileOrange"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

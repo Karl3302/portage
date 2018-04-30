@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by Hang on 18-4-12 下午5:45
+  ~ Copyright (c) 2018 . All rights reserved.
+  ~ Last modified 18-4-12 下午5:45
+  -->
+
+<!--
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_profile_coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/monprofilBackgroundGrey"
+    android:fitsSystemWindows="true"
+    tools:context=".MainMenu">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:titleEnabled="false">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_my_profile"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/title_mon_profil" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottomNavigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:background="@color/zeprofileGreen"
+        android:fitsSystemWindows="true"
+        app:itemIconTint="@drawable/colors_bottom_navigation"
+        app:itemTextColor="@drawable/colors_bottom_navigation"
+        app:menu="@menu/bottom_navigation_menu" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/profilePublicBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_slide_button"
+                android:drawableLeft="@drawable/ic_portrait_black_24dp"
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_ababab_24dp"
+                android:gravity="start"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="13dp"
+                android:text="@string/title_manage_profile_public"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/visibilityBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <Button
+                android:id="@+id/visibilityBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_slide_button"
+                android:drawableLeft="@drawable/ic_visibility_off_black_24dp"
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_ababab_24dp"
+                android:gravity="start"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="13dp"
+                android:text="@string/title_manage_visibility"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/bankAccountBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profilePublicBtn" />
+
+            <Button
+                android:id="@+id/bankAccountBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_slide_button"
+                android:drawableLeft="@drawable/ic_credit_card_black_24dp"
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_ababab_24dp"
+                android:gravity="start"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="13dp"
+                android:text="@string/title_manage_bank_account"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/userParameterBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/visibilityBtn" />
+
+            <Button
+                android:id="@+id/userParameterBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_slide_button"
+                android:drawableLeft="@drawable/ic_settings_black_24dp"
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_ababab_24dp"
+                android:gravity="start"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="13dp"
+                android:text="@string/title_manage_settings"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/suggestionBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bankAccountBtn" />
+
+            <Button
+                android:id="@+id/suggestionBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_slide_button"
+                android:drawableLeft="@drawable/ic_feedback_black_24dp"
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_ababab_24dp"
+                android:gravity="start"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="13dp"
+                android:text="@string/title_manage_feedback"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/descriptionParamTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userParameterBtn" />
+
+            <TextView
+                android:id="@+id/descriptionParamTextView"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:gravity="center"
+                android:text="Description de paramètre"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/suggestionBtn" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
+-->
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_menu_drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainMenu">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/monprofilBackgroundGrey"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:titleEnabled="false">
+                <!--app:layout_scrollFlags="scroll|enterAlways|snap"-->
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbarMainMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:titleEnabled="false">
+
+                    <TextView
+                        android:id="@+id/titleToolbarMainMenu"
+                        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"/>
+                </android.support.v7.widget.Toolbar>
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom"
+            android:background="@color/zeprofileGreen"
+            app:itemIconTint="@drawable/colors_bottom_navigation"
+            app:itemTextColor="@drawable/colors_bottom_navigation"
+            app:menu="@menu/bottom_navigation_menu" />
+
+        <com.zeprofile.zeprofile.Utils.CustomViewPager
+            android:id="@+id/mainMenuViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </android.support.design.widget.CoordinatorLayout>
+    <!--
+        <android.support.design.widget.NavigationView
+            android:id="@+id/side_navigation_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/side_navigation_header"
+            app:menu="@menu/side_navigation_menu" />
+    -->
+</android.support.v4.widget.DrawerLayout>

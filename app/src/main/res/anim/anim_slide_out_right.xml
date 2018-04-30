@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Animation: exit the screen from right side -->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<scale
+        android:duration="@integer/duration_horizontal_scale"
+        android:fromXScale="1.0"
+        android:fromYScale="1.0"
+        android:interpolator="@android:anim/decelerate_interpolator"
+        android:pivotX="50%p"
+        android:pivotY="50%p"
+        android:toXScale="0.7"
+        android:toYScale="0.7" />
+    <translate
+        android:duration="@integer/duration_horizontal_translate"
+        android:fromXDelta="0%p"
+        android:interpolator="@android:anim/decelerate_interpolator"
+        android:startOffset="@integer/duration_horizontal_scale"
+        android:toXDelta="100%p" />
+    <alpha
+        android:duration="@integer/duration_horizontal_scale"
+        android:fromAlpha="1.0"
+        android:toAlpha="0.7" />-->
+    <translate
+        android:duration="@integer/duration_horizontal_full_animation"
+        android:fromXDelta="0%p"
+        android:interpolator="@android:anim/accelerate_interpolator"
+        android:toXDelta="100%p" />
+</set>

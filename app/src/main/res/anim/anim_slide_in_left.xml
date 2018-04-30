@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Animation enter the screen from left side
+ fromXDelta 属性为动画起始时 X坐标上的位置
+ toXDelta   属性为动画结束时 X坐标上的位置
+ fromYDelta 属性为动画起始时 Y坐标上的位置
+ toYDelta   属性为动画结束时 Y坐标上的位置
+ x%p        代表以父层作为参照系, 原点为(0%p,0%p); 最远点为(100%p,100%p). 原点位于屏幕的左上角
+ -->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- animation: 平移 -->
+    <!--<translate
+        android:duration="@integer/duration_horizontal_translate"
+        android:fromXDelta="-100%p"
+        android:interpolator="@android:anim/decelerate_interpolator"
+        android:startOffset="@integer/duration_horizontal_scale"
+        android:toXDelta="0%p" />-->
+    <!-- fade -->
+    <alpha
+        android:duration="@integer/duration_horizontal_full_animation"
+        android:fromAlpha="0"
+        android:toAlpha="1.0" />
+</set>

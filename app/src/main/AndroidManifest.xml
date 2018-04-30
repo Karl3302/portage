@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by Hang on 18-4-12 下午3:19
+  ~ Copyright (c) 2018 . All rights reserved.
+  ~ Last modified 18-4-12 下午12:37
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:categoryandroid="http://schemas.android.com/tools"
+    package="com.zeprofile.zeprofile">
+
+    <!-- For testing code reset by email (email sent by app) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- For testing / demo -->
+    <application
+        android:allowBackup="true"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:icon="@mipmap/ic_zeprofile"
+        android:label="@string/title_app_name"
+        android:roundIcon="@mipmap/ic_zeprofile_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Entrance">
+
+        <!-- The application start with login activity -->
+        <activity
+            android:name=".Login"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignUp"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".SendResetEmail"
+            android:label="@string/title_reset_password"
+            android:theme="@style/Theme.DialogHalfScreen" />
+        <activity android:name=".ResetPassword" />
+        <!--<activity
+            android:name=".Test.Discount"
+            android:label="@string/title_discount"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.ActivityWithActionBar" />-->
+        <activity
+            android:name=".MainMenu"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.ActivityWithoutActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--<activity
+            android:name=".Test.ManageVisibility"
+            android:label="@string/title_manage_visibility"
+            android:theme="@style/Theme.ActivityWithActionBar" />
+        <activity
+            android:name=".Test.ManageBankAccount"
+            android:label="@string/title_manage_bank_account"
+            android:theme="@style/Theme.ActivityWithActionBar" />
+        <activity
+            android:name=".Test.ManageUserSetting"
+            android:label="@string/title_manage_settings"
+            android:theme="@style/Theme.ActivityWithoutActionBar"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Test.ManageSuggestion"
+            android:label="@string/title_manage_feedback"
+            android:theme="@style/Theme.ActivityWithActionBar" />
+        <activity
+            android:name=".Test.ManageProfilePublic"
+            android:label="@string/title_manage_profile_public"
+            android:theme="@style/Theme.ActivityWithActionBar" />-->
+    </application>
+
+</manifest>

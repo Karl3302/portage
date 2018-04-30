@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/leftTabBotNav"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="@string/left_tab_of_bottom_nav"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/rightTabBotNav"
+        android:enabled="true"
+        android:icon="@drawable/ic_local_offer_black_24dp"
+        android:title="@string/right_tab_of_bottom_nav"
+        app:showAsAction="ifRoom" />
+</menu>

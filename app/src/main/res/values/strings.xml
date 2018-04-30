@@ -1,0 +1,168 @@
+<!--
+  ~ Created by Hang on 18-4-12 下午3:19
+  ~ Copyright (c) 2018 . All rights reserved.
+  ~ Last modified 18-4-10 下午2:19
+  -->
+
+<resources>
+    <!-- Strings related to titles of the activities -->
+    <string name="title_app_name">Ze Profile</string>
+    <string name="title_discount">Mes Offres</string>
+    <string name="title_profile">Mon Profil</string>
+    <string name="title_reset_password">Envoyer le code de réinitialisation</string>
+    <string name="title_manage_profile_public">Mon Image Partagée</string>
+    <string name="title_manage_visibility">Visibilité</string>
+    <string name="title_manage_bank_account">Comptes Bancaires</string>
+    <string name="title_manage_settings">Paramètres</string>
+    <string name="title_manage_feedback">À propose de Ze Profile</string>
+
+    <!-- Strings related to login, sign up and reset the password-->
+    <string name="text_emailTextField">Email</string>
+    <string name="text_passwordTextField">Mot de passe</string>
+    <string name="text_forgetPasswordBtn">Mot de passe oublié ?</string>
+    <string name="text_loginBtn">Se connecter</string>
+    <string name="text_signUpBtn">S\'inscrire</string>
+    <string name="text_lastNameTextField">Nom</string>
+    <string name="text_firstNameTextField">Prénom</string>
+    <string name="text_app_logo_description">Zeprofile_logo</string>
+    <string name="text_enter_the_code">Code de récupération envoyé par email :</string>
+    <string name="text_codeTextField">code</string>
+    <string name="text_resendCodeBtn">Renvoyer le code</string>
+    <string name="text_textSetNewPassword">Nouveau mot de passe :</string>
+    <string name="text_newPasswordTextField">Nouveau mot de passe</string>
+    <string name="text_confirmPasswordTextField">Confirmer mot de passe</string>
+    <string name="text_resetPasswordBtn">Réinitialiser</string>
+    <string name="text_sendCodeBtn">Envoyer le code</string>
+    <string name="text_enterEmailForResetCodeTextField">Entrez votre email :</string>
+
+    <!-- Strings related to bottom navigation tabs -->
+    <string name="left_tab_of_bottom_nav">Profil</string>
+    <string name="right_tab_of_bottom_nav">Offres</string>
+
+    <!-- Strings related to side navigation tabs -->
+    <string name="first_primary_element_of_side_nav">Mon Profil</string>
+    <string name="second_primary_element_of_side_nav">Mes Offres</string>
+    <string name="title_activity_bot_nav_example">BotNavExemple</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!-- Strings related to the option of the view containers
+    <string name="viewContainer_MainMenu">viewPager_MainMenu</string>
+    <string name="viewContainer_ProfileRoot">viewPager_ProfileRoot</string>-->
+
+    <!-- Strings related to preferences -->
+    <string name="key_preference_last_name">user_setting_last_name</string>
+    <string name="key_preference_first_name">user_setting_first_name</string>
+    <string name="key_preference_email">user_setting_email</string>
+    <string name="key_preference_home_address">user_setting_home_address</string>
+    <string name="key_preference_delivery_address">user_setting_delivery_address</string>
+
+    <string name="key_preference_localization_continuous">user_visibility_localization_continuous</string>
+    <string name="key_preference_localization_address">user_visibility_localization_address</string>
+    <string name="key_preference_duration">user_visibility_limited_duration</string>
+    <string name="key_preference_destination">user_visibility_destination</string>
+
+    <string name="text_home_address">Adresse domicile</string>
+    <string name="text_delivery_address">Adresse de livraison</string>
+
+    <string name="text_localization_continuous">Localisation en continu</string>
+    <string name="text_localization_address">Communiquer mon adresse</string>
+    <string name="title_duration_user_visibility">Durée</string>
+    <string name="title_destination_user_visibility">Destinataire</string>
+
+    <string-array name="list_titles_duration_user_visibility">
+        <item>1 an</item>
+        <item>illimité</item>
+    </string-array>
+    <string-array name="list_values_duration_user_visibility">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="list_titles_destination_user_visibility">
+        <item>Destinataire uniquement</item>
+        <item>Destinataire et ses partenaires</item>
+    </string-array>
+    <string-array name="list_values_destination_user_visibility">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+
+    <!--
+      ~ Samples
+    -->
+    <!-- Strings related to Settings
+    <string name="titre_activity_settings">Settings</string>-->
+
+    <!-- Example General settings
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>-->
+
+    <!-- Example settings for Data & Sync
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>-->
+
+    <!-- Example settings for Notifications
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>-->
+</resources>

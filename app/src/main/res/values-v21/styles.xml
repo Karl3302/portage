@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <style name="Theme.ActivityWithoutActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/Animation.SlideHorizontal</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--状态栏是否覆盖在ContentView上-->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <!--Translucent system bars-->
+        <item name="android:windowTranslucentNavigation">false</item>
+        <!--设置系统状态栏是否为透明-->
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+</resources>

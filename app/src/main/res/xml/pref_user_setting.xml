@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+    <com.zeprofile.zeprofile.Utils.CustomPreferenceCategory
+        android:key="user_setting_category_info_basic"
+        android:summary=""
+        android:title="Mes Coordonnées">
+        <EditTextPreference
+            android:capitalize="words"
+            android:inputType="textCapWords"
+            android:key="@string/key_preference_last_name"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/text_lastNameTextField" />
+        <EditTextPreference
+            android:capitalize="words"
+            android:inputType="textCapWords"
+            android:key="@string/key_preference_first_name"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/text_firstNameTextField" />
+        <EditTextPreference
+            android:capitalize="words"
+            android:inputType="textCapWords"
+            android:key="@string/key_preference_email"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/text_emailTextField" />
+    </com.zeprofile.zeprofile.Utils.CustomPreferenceCategory>
+    <com.zeprofile.zeprofile.Utils.CustomPreferenceCategory
+        android:key="user_setting_category_info_address"
+        android:summary=""
+        android:title="Mes Adresse">
+        <EditTextPreference
+            android:capitalize="words"
+            android:inputType="textCapWords"
+            android:key="@string/key_preference_home_address"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/text_home_address" />
+        <EditTextPreference
+            android:capitalize="words"
+            android:inputType="textCapWords"
+            android:key="@string/key_preference_delivery_address"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:title="@string/text_delivery_address" />
+    </com.zeprofile.zeprofile.Utils.CustomPreferenceCategory>
+</PreferenceScreen>

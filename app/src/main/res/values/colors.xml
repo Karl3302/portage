@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Hang on 18-4-12 下午3:19
+  ~ Copyright (c) 2018 . All rights reserved.
+  ~ Last modified 18-4-10 下午2:02
+  -->
+
+<resources>
+    <color name="colorPrimary">#01A4B7</color>
+    <color name="colorPrimaryDark">#018EA0</color>
+    <color name="colorAccent">#EF9219</color>
+
+    <!--
+        Special colors for Ze Profile
+    -->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="grey">#808080</color>
+    <color name="zeprofileGreen">#01A4B7</color>
+    <color name="zeprofileDarkGreen">#018EA0</color><!--169195-->
+    <color name="zeprofileLightGreen">#40BAC9</color>
+    <color name="zeprofileOrange">#EF9219</color>
+    <color name="textbackgroundGrey">#F5F5F5</color>
+    <color name="monprofilBackgroundGrey">#EFEFF4</color>
+    <color name="buttonMask">#F0F0F0</color>
+</resources>

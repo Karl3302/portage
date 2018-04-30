@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by Hang on 18-4-12 下午3:19
+  ~ Copyright (c) 2018 . All rights reserved.
+  ~ Last modified 18-4-12 上午11:33
+  -->
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".SendResetEmail">
+
+    <Button
+        android:id="@+id/sendCodeBtn"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/bg_rounded_button"
+        android:text="@string/text_sendCodeBtn"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailTextField" />
+
+    <EditText
+        android:id="@+id/emailTextField"
+        android:layout_width="230dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_textfield"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/text_emailTextField"
+        android:inputType="textEmailAddress"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/sendCodeBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterEmailForResetCodeTextField" />
+
+    <TextView
+        android:id="@+id/enterEmailForResetCodeTextField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/text_enterEmailForResetCodeTextField"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/emailTextField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+</android.support.constraint.ConstraintLayout>
