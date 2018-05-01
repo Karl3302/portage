@@ -10,7 +10,7 @@
         <!--状态栏是否覆盖在ContentView上-->
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <!--Translucent system bars-->
-        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
         <!--设置系统状态栏是否为透明-->
         <item name="android:windowTranslucentStatus">true</item>
     </style>

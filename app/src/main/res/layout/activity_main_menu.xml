@@ -228,10 +228,17 @@
                         style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center" />
                 </android.support.v7.widget.Toolbar>
             </android.support.design.widget.CollapsingToolbarLayout>
         </android.support.design.widget.AppBarLayout>
+
+        <com.zeprofile.zeprofile.Utils.CustomViewPager
+            android:id="@+id/mainMenuViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottomNavigationView"
@@ -242,13 +249,6 @@
             app:itemIconTint="@drawable/colors_bottom_navigation"
             app:itemTextColor="@drawable/colors_bottom_navigation"
             app:menu="@menu/bottom_navigation_menu" />
-
-        <com.zeprofile.zeprofile.Utils.CustomViewPager
-            android:id="@+id/mainMenuViewPager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </android.support.design.widget.CoordinatorLayout>
     <!--
         <android.support.design.widget.NavigationView

@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +18,7 @@ import java.util.List;
 public class FragmentProfile extends Fragment {
     private String email;
     private TextView mDescriptionParamTextView;
-    private Button mProfilePublicBtn, mVisibilityBtn, mBankAccountBtn, mUserSettingBtn, mSuggestionBtn;
+    private Button mPublicProfileBtn, mVisibilityBtn, mBankAccountBtn, mUserSettingBtn, mAboutBtn;
     private View mView;
     private ViewPager mProfileRootViewPager;
     private List<Fragment> listFragment;
@@ -37,11 +35,11 @@ public class FragmentProfile extends Fragment {
 
     public void initView() {
         mDescriptionParamTextView = (TextView) mView.findViewById(R.id.descriptionParamTextView);
-        mProfilePublicBtn = (Button) mView.findViewById(R.id.profilePublicBtn);
+        mPublicProfileBtn = (Button) mView.findViewById(R.id.publicProfileBtn);
         mVisibilityBtn = (Button) mView.findViewById(R.id.visibilityBtn);
         mBankAccountBtn = (Button) mView.findViewById(R.id.bankAccountBtn);
         mUserSettingBtn = (Button) mView.findViewById(R.id.userSettingBtn);
-        mSuggestionBtn = (Button) mView.findViewById(R.id.suggestionBtn);
+        mAboutBtn = (Button) mView.findViewById(R.id.aboutBtn);
 
         mProfileRootViewPager = (ViewPager) getActivity().findViewById(R.id.profileRootViewPager);
     }
@@ -60,13 +58,13 @@ public class FragmentProfile extends Fragment {
         window.getWindow().setNavigationBarColor(Color.TRANSPARENT);//设置导航栏颜色透明*/
 
         // Set up click event for sign up button
-        mProfilePublicBtn.setOnClickListener(new View.OnClickListener() {
+        mPublicProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 //mProfileRootViewPager.setCurrentItem(1,false);
                 ZeProfileUtils.loadViewPager(getActivity(), R.id.profileRootViewPager,1);
-                //ZeProfileUtils.moveToNextActivity(inflater.getContext(), ManageProfilePublic.class, "emailAddress", email);
+                //ZeProfileUtils.moveToNextActivity(inflater.getContext(), ManagePublicProfile.class, "emailAddress", email);
             }
         });
         mVisibilityBtn.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +85,7 @@ public class FragmentProfile extends Fragment {
                 ZeProfileUtils.loadViewPager(getActivity(), R.id.profileRootViewPager,4);
             }
         });
-        mSuggestionBtn.setOnClickListener(new View.OnClickListener() {
+        mAboutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ZeProfileUtils.loadViewPager(getActivity(), R.id.profileRootViewPager,5);

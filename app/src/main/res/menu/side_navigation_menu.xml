@@ -18,9 +18,9 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/side_navigation_profile_public_sub_tab"
+                    android:id="@+id/side_navigation_public_profile_sub_tab"
                     android:icon="@drawable/ic_portrait_black_24dp"
-                    android:title="@string/title_manage_profile_public" />
+                    android:title="@string/title_manage_public_profile" />
                 <item
                     android:id="@+id/side_navigation_visibility_sub_tab"
                     android:icon="@drawable/ic_visibility_off_black_24dp"
@@ -34,9 +34,9 @@
                     android:icon="@drawable/ic_settings_black_24dp"
                     android:title="@string/title_manage_settings" />
                 <item
-                    android:id="@+id/side_navigation_feedback_sub_tab"
+                    android:id="@+id/side_navigation_about_sub_tab"
                     android:icon="@drawable/ic_feedback_black_24dp"
-                    android:title="@string/title_manage_feedback" />
+                    android:title="@string/title_manage_about" />
             </group>
         </menu>
     </item>

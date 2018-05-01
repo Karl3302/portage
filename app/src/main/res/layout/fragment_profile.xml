@@ -7,7 +7,7 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/profilePublicBtn"
+                android:id="@+id/publicProfileBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_slide_button"
@@ -31,7 +31,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
                 android:paddingTop="13dp"
-                android:text="@string/title_manage_profile_public"
+                android:text="@string/title_manage_public_profile"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/visibilityBtn"
@@ -61,7 +61,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profilePublicBtn" />
+                app:layout_constraintTop_toBottomOf="@+id/publicProfileBtn" />
 
             <Button
                 android:id="@+id/bankAccountBtn"
@@ -101,18 +101,18 @@
                 android:text="@string/title_manage_settings"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/suggestionBtn"
+                app:layout_constraintBottom_toTopOf="@+id/aboutBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bankAccountBtn" />
 
             <Button
-                android:id="@+id/suggestionBtn"
+                android:id="@+id/aboutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_slide_button"
-                android:drawableLeft="@drawable/ic_feedback_black_24dp"
+                android:drawableLeft="@drawable/ic_info_outline_black_24dp"
                 android:drawablePadding="20dp"
                 android:drawableRight="@drawable/ic_keyboard_arrow_right_ababab_24dp"
                 android:gravity="start"
@@ -120,7 +120,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
                 android:paddingTop="13dp"
-                android:text="@string/title_manage_feedback"
+                android:text="@string/title_manage_about"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/descriptionParamTextView"
@@ -141,7 +141,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/suggestionBtn" />
+                app:layout_constraintTop_toBottomOf="@+id/aboutBtn" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v4.widget.NestedScrollView>
 

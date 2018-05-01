@@ -10,11 +10,11 @@
     <string name="title_discount">Mes Offres</string>
     <string name="title_profile">Mon Profil</string>
     <string name="title_reset_password">Envoyer le code de réinitialisation</string>
-    <string name="title_manage_profile_public">Mon Image Partagée</string>
+    <string name="title_manage_public_profile">Mon Image Partagée</string>
     <string name="title_manage_visibility">Visibilité</string>
     <string name="title_manage_bank_account">Comptes Bancaires</string>
     <string name="title_manage_settings">Paramètres</string>
-    <string name="title_manage_feedback">À propose de Ze Profile</string>
+    <string name="title_manage_about">À propose de Ze Profile</string>
 
     <!-- Strings related to login, sign up and reset the password-->
     <string name="text_emailTextField">Email</string>

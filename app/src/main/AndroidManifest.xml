@@ -71,11 +71,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Test.ManageSuggestion"
+            android:name=".Test.ManageAbout"
             android:label="@string/title_manage_feedback"
             android:theme="@style/Theme.ActivityWithActionBar" />
         <activity
-            android:name=".Test.ManageProfilePublic"
+            android:name=".Test.ManagePublicProfile"
             android:label="@string/title_manage_profile_public"
             android:theme="@style/Theme.ActivityWithActionBar" />-->
     </application>

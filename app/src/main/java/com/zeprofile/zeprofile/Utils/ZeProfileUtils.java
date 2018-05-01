@@ -126,7 +126,7 @@ public class ZeProfileUtils {
         switch (viewContainer) {
             case R.id.mainMenuViewPager:
                 // Hide the home button of the toolbar
-                mActionBar.setDisplayHomeAsUpEnabled(false);
+                if(mActionBar!=null) mActionBar.setDisplayHomeAsUpEnabled(false);
                 // Load the page
                 mMainMenuVP.setCurrentItem(page);
                 // Load the sous-page & Set the title
@@ -144,13 +144,13 @@ public class ZeProfileUtils {
                 break;
             case R.id.profileRootViewPager:
                 // Show the home button of the toolbar
-                mActionBar.setDisplayHomeAsUpEnabled(true);
+                if(mActionBar!=null) mActionBar.setDisplayHomeAsUpEnabled(true);
                 // Load the page
                 mProfileRootVP.setCurrentItem(page, false);
                 // Set the title
                 switch (page) {
                     case 1:
-                        mTextView.setText(R.string.title_manage_profile_public);
+                        mTextView.setText(R.string.title_manage_public_profile);
                         break;
                     case 2:
                         mTextView.setText(R.string.title_manage_visibility);
@@ -162,7 +162,7 @@ public class ZeProfileUtils {
                         mTextView.setText(R.string.title_manage_settings);
                         break;
                     case 5:
-                        mTextView.setText(R.string.title_manage_feedback);
+                        mTextView.setText(R.string.title_manage_about);
                         break;
                     default:
                         break;

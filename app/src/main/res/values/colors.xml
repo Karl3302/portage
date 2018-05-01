@@ -15,7 +15,9 @@
     -->
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="grey">#808080</color>
+    <color name="lightGrey">#CDCDCD</color>
+    <color name="grey">#696969</color>
+    <color name="darkGrey">#373737</color>
     <color name="zeprofileGreen">#01A4B7</color>
     <color name="zeprofileDarkGreen">#018EA0</color><!--169195-->
     <color name="zeprofileLightGreen">#40BAC9</color>

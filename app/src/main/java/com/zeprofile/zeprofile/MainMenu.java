@@ -19,7 +19,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -63,6 +62,9 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+      //  View decorView = getWindow().getDecorView();
+      //  decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         initViews();
         initData();
@@ -110,6 +112,7 @@ public class MainMenu extends AppCompatActivity {
         // Setup the fragment adapter
         FragmentAdapter mFragmentAdapter = new FragmentAdapter(this.getFragmentManager(), this, mListFragment);
         mMainMenuViewPager.setAdapter(mFragmentAdapter);
+
 
         // Set the animation time
         mMainMenuViewPager.setScrollDurationFactor(4);
@@ -233,10 +236,10 @@ public class MainMenu extends AppCompatActivity {
                                 mActionBar.setTitle(R.string.title_discount);
                                 mBottomNavigationView.getMenu().getItem(1).setChecked(true);
                                 break;
-                            case R.id.side_navigation_profile_public_sub_tab:
+                            case R.id.side_navigation_public_profile_sub_tab:
                                 mMainMenuViewPager.setCurrentItem(0);
                                 mProfileRootViewPager.setCurrentItem(1);
-                                mActionBar.setTitle(R.string.title_manage_profile_public);
+                                mActionBar.setTitle(R.string.title_manage_public_profile);
                                 mBottomNavigationView.getMenu().getItem(0).setChecked(true);
                                 break;
                             case R.id.side_navigation_visibility_sub_tab:
@@ -257,10 +260,10 @@ public class MainMenu extends AppCompatActivity {
                                 mActionBar.setTitle(R.string.title_manage_settings);
                                 mBottomNavigationView.getMenu().getItem(0).setChecked(true);
                                 break;
-                            case R.id.side_navigation_feedback_sub_tab:
+                            case R.id.side_navigation_about_sub_tab:
                                 mMainMenuViewPager.setCurrentItem(0);
                                 mProfileRootViewPager.setCurrentItem(5);
-                                mActionBar.setTitle(R.string.title_manage_feedback);
+                                mActionBar.setTitle(R.string.title_manage_about);
                                 mBottomNavigationView.getMenu().getItem(0).setChecked(true);
                                 break;
                             default:
