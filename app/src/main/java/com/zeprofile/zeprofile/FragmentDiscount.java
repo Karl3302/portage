@@ -15,13 +15,13 @@ public class FragmentDiscount extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_discount, container, false);
-        Button bt = (Button) view.findViewById(R.id.bt);
+        /*Button bt = (Button) view.findViewById(R.id.bt);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ZeProfileUtils.shortTopToastBar(getActivity(), "MesOffres");
             }
-        });
+        });*/
         return view;
     }
 }

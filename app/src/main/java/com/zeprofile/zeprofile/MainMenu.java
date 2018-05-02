@@ -73,7 +73,7 @@ public class MainMenu extends AppCompatActivity {
 
     public void initViews() {
         mToolbar = (Toolbar) findViewById(R.id.toolbarMainMenu);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.main_menu_drawer_layout);
+        //mDrawerLayout = (DrawerLayout) findViewById(R.id.main_menu_drawer_layout); //side navigation
         mBottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         // mSideNavigationView = (NavigationView) findViewById(R.id.side_navigation_view);
         // mSideNavigationHeaderView = this.getLayoutInflater().inflate(R.layout.side_navigation_header, mSideNavigationView);
@@ -213,7 +213,7 @@ public class MainMenu extends AppCompatActivity {
             }
         });
     }
-
+/*
     private void onNavigationViewMenuItemSelected(NavigationView mNav) {
         mNav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -276,5 +276,5 @@ public class MainMenu extends AppCompatActivity {
                 return true;
             }
         });
-    }
+    }*/
 }

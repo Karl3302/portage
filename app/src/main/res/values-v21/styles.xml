@@ -8,10 +8,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--状态栏是否覆盖在ContentView上-->
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+      <!--  <item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
         <!--Translucent system bars-->
-        <item name="android:windowTranslucentNavigation">true</item>
+      <!--  <item name="android:windowTranslucentNavigation">true</item>-->
         <!--设置系统状态栏是否为透明-->
-        <item name="android:windowTranslucentStatus">true</item>
+      <!--  <item name="android:windowTranslucentStatus">true</item>-->
     </style>
 </resources>
