@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+
     <style name="Theme.ActivityWithoutActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+
         <item name="android:windowAnimationStyle">@style/Animation.SlideHorizontal</item>
         <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!--状态栏是否覆盖在ContentView上-->
-      <!--  <item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
-        <!--Translucent system bars-->
-      <!--  <item name="android:windowTranslucentNavigation">true</item>-->
-        <!--设置系统状态栏是否为透明-->
-      <!--  <item name="android:windowTranslucentStatus">true</item>-->
+
+        <!-- 状态栏是否覆盖在ContentView上-->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <!-- 设置点击底部导航栏时扩散效果的颜色 -->
+        <!--<item name="colorControlHighlight">@color/black</item>-->
+        <!-- Translucent system bottom bar-->
+        <!--<item name="android:windowTranslucentNavigation">true</item>-->
+        <!-- Translucent system status (top) bar-->
+        <item name="android:windowTranslucentStatus">true</item>
+
     </style>
 </resources>

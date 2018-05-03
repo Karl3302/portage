@@ -196,6 +196,7 @@
     android:fitsSystemWindows="true"
     tools:context=".MainMenu">-->
 
+
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -244,13 +245,19 @@
             android:id="@+id/mainMenuViewPager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/bottomNavigationView"/>
+            android:layout_above="@+id/shadowBottomNavigationView" />
+
+        <View
+            android:id="@+id/shadowBottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_above="@id/bottomNavigationView"
+            android:background="@drawable/shadow_bottom_navigation_view" />
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_gravity="bottom"
             android:layout_alignParentBottom="true"
             android:background="@color/zeprofileGreen"
             app:itemIconTint="@drawable/colors_bottom_navigation"
@@ -259,7 +266,6 @@
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
-
 
     <!--
         <android.support.design.widget.NavigationView
