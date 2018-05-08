@@ -1,4 +1,4 @@
-package com.zeprofile.zeprofile.Test;
+package com.zeprofile.zeprofile.test;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.zeprofile.zeprofile.R;
-import com.zeprofile.zeprofile.Utils.DatabaseHelper;
-import com.zeprofile.zeprofile.Utils.ZeProfileUtils;
+import com.zeprofile.zeprofile.utils.DatabaseHelper;
+import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
 
 public class ManageUserSetting extends AppCompatActivity {

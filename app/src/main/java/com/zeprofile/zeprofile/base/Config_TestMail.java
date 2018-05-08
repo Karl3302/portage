@@ -5,7 +5,7 @@
  ********** Only for testing / demo ***********
  */
 
-package com.zeprofile.zeprofile.Utils;
+package com.zeprofile.zeprofile.base;
 
 public class Config_TestMail {
     public static final String EMAIL = "zeprofile.pc@gmail.com";

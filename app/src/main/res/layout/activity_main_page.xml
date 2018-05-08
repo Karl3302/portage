@@ -13,7 +13,7 @@
     android:layout_height="match_parent"
     android:background="@color/monprofilBackgroundGrey"
     android:fitsSystemWindows="true"
-    tools:context=".MainMenu">
+    tools:context=".MainPage">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -194,8 +194,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".MainMenu">-->
-
+    tools:context=".MainPage">-->
 
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -206,27 +205,27 @@
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/mainPageAppBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbar"
+            android:id="@+id/mainPageCollapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             app:titleEnabled="false">
             <!--app:layout_scrollFlags="scroll|enterAlways|snap"-->
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbarMainMenu"
+                android:id="@+id/mainPageToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:titleEnabled="false">
 
                 <TextView
-                    android:id="@+id/titleToolbarMainMenu"
+                    android:id="@+id/mainPageTitleToolbar"
                     style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -241,21 +240,21 @@
         android:fitsSystemWindows="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.zeprofile.zeprofile.Utils.CustomViewPager
-            android:id="@+id/mainMenuViewPager"
+        <FrameLayout
+            android:id="@+id/mainPageFrameLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/shadowBottomNavigationView" />
+            android:layout_height="match_parent"
+            android:layout_above="@+id/mainPageBottomNavigationViewShadow" />
 
         <View
-            android:id="@+id/shadowBottomNavigationView"
+            android:id="@+id/mainPageBottomNavigationViewShadow"
             android:layout_width="match_parent"
             android:layout_height="4dp"
-            android:layout_above="@id/bottomNavigationView"
+            android:layout_above="@id/mainPageBottomNavigationView"
             android:background="@drawable/shadow_bottom_navigation_view" />
 
         <android.support.design.widget.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+            android:id="@+id/mainPageBottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"

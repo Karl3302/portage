@@ -44,7 +44,7 @@
             android:launchMode="singleTop"
             android:theme="@style/Theme.ActivityWithActionBar" />-->
         <activity
-            android:name=".MainMenu"
+            android:name=".MainPage"
             android:launchMode="singleTop"
             android:theme="@style/Theme.ActivityWithoutActionBar">
             <intent-filter>

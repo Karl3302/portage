@@ -14,8 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.zeprofile.zeprofile.Utils.DatabaseHelper;
-import com.zeprofile.zeprofile.Utils.ZeProfileUtils;
+import com.zeprofile.zeprofile.utils.DatabaseHelper;
+import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
 public class ResetPassword extends AppCompatActivity {
 

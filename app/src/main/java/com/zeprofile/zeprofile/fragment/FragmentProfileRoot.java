@@ -1,4 +1,4 @@
-package com.zeprofile.zeprofile;
+package com.zeprofile.zeprofile.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zeprofile.zeprofile.Utils.FragmentAdapter;
-import com.zeprofile.zeprofile.Utils.ZeProfileUtils;
+import com.zeprofile.zeprofile.R;
+import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class FragmentProfileRoot extends Fragment {
         listFragment.add(new FragmentPublicProfile());
         listFragment.add(new FragmentVisibility());
         listFragment.add(new FragmentBankAccount());
-        listFragment.add(new FragmentUserSetting());
+        listFragment.add(new FragmentUserSettings());
         listFragment.add(new FragmentAbout());
         mProfileRootViewPager = (ViewPager) mView.findViewById(R.id.profileRootViewPager);
     }
@@ -48,8 +48,8 @@ public class FragmentProfileRoot extends Fragment {
     }
 
     public void configView(LayoutInflater inflater) {
-        FragmentAdapter mAdapter = new FragmentAdapter(this.getChildFragmentManager(), this.getContext(), listFragment); // Need API 17 support
+      /*  FragmentAdapter mAdapter = new FragmentAdapter(this.getChildFragmentManager(), this.getContext(), listFragment); // Need API 17 support
         mProfileRootViewPager.setAdapter(mAdapter);
         ZeProfileUtils.loadViewPager(getActivity(),R.id.mainMenuViewPager,0);
-    }
+    */}
 }

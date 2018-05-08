@@ -14,8 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.zeprofile.zeprofile.Utils.DatabaseHelper;
-import com.zeprofile.zeprofile.Utils.ZeProfileUtils;
+import com.zeprofile.zeprofile.utils.DatabaseHelper;
+import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
 public class Login extends AppCompatActivity {
 
@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity {
                             passwordTextField.setText(null);
 
                             // Move to next activity: mon profile and transfer the email
-                            ZeProfileUtils.moveToNextActivity(Login.this, MainMenu.class, "emailAddress", email);
+                            ZeProfileUtils.moveToNextActivity(Login.this, MainPage.class, "emailAddress", email);
                         } else {
                             ZeProfileUtils.shortTopToastBar(getApplicationContext(), "Email ou mot de passe n'est pas reconnu par le système");
                         }

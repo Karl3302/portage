@@ -1,7 +1,6 @@
-package com.zeprofile.zeprofile.Utils;
+package com.zeprofile.zeprofile.base;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.preference.PreferenceCategory;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;

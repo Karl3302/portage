@@ -4,17 +4,14 @@
  * Last modified 18-4-12 下午1:41
  */
 
-package com.zeprofile.zeprofile.Utils;
+package com.zeprofile.zeprofile.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 import android.util.Patterns;
-
-import com.zeprofile.zeprofile.Login;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "zeprofile.db";

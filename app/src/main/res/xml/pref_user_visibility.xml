@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.zeprofile.zeprofile.Utils.CustomPreferenceCategory
+    <com.zeprofile.zeprofile.base.CustomPreferenceCategory
         android:key="user_visibility_category_location"
         android:title="Localisation">
         <SwitchPreference
@@ -12,9 +12,9 @@
             android:defaultValue="false"
             android:key="@string/key_preference_localization_address"
             android:title="@string/text_localization_address" />
-    </com.zeprofile.zeprofile.Utils.CustomPreferenceCategory>
+    </com.zeprofile.zeprofile.base.CustomPreferenceCategory>
 
-    <com.zeprofile.zeprofile.Utils.CustomPreferenceCategory
+    <com.zeprofile.zeprofile.base.CustomPreferenceCategory
         android:key="user_visibility_category_duration"
         android:title="Durée">
         <ListPreference
@@ -25,9 +25,9 @@
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
             android:title="@string/title_duration_user_visibility" />
-    </com.zeprofile.zeprofile.Utils.CustomPreferenceCategory>
+    </com.zeprofile.zeprofile.base.CustomPreferenceCategory>
 
-    <com.zeprofile.zeprofile.Utils.CustomPreferenceCategory
+    <com.zeprofile.zeprofile.base.CustomPreferenceCategory
         android:key="user_visibility_category_recipient"
         android:title="Destinataire">
         <ListPreference
@@ -38,5 +38,5 @@
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
             android:title="@string/title_destination_user_visibility" />
-    </com.zeprofile.zeprofile.Utils.CustomPreferenceCategory>
+    </com.zeprofile.zeprofile.base.CustomPreferenceCategory>
 </PreferenceScreen>

@@ -1,4 +1,4 @@
-package com.zeprofile.zeprofile;
+package com.zeprofile.zeprofile.fragment;
 
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -11,20 +11,24 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
-import com.zeprofile.zeprofile.Utils.DatabaseHelper;
-import com.zeprofile.zeprofile.Utils.ZeProfileUtils;
+import com.zeprofile.zeprofile.R;
+import com.zeprofile.zeprofile.base.CustomRelativeLayout;
+import com.zeprofile.zeprofile.utils.DatabaseHelper;
+import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
 public class FragmentVisibility extends PreferenceFragment {
     private SwitchPreference mLocalizationContinuousSwitchPreference, mLocalizationAddressSwitchPreference;
     private ListPreference mDurationListPreference, mDestinationListPreference;
     private static DatabaseHelper mDataBaseHelper;
     private static String email;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,16 @@ public class FragmentVisibility extends PreferenceFragment {
         initViews();
         initData();
         configViews();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        CustomRelativeLayout customRelativeLayout = new CustomRelativeLayout(getActivity());
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        customRelativeLayout.setLayoutParams(layoutParams);
+        customRelativeLayout.addView(view);
+        return customRelativeLayout;
     }
 
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
@@ -150,7 +164,7 @@ public class FragmentVisibility extends PreferenceFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            ZeProfileUtils.loadViewPager(getActivity(), R.id.mainMenuViewPager, 0);
+            ZeProfileUtils.loadMainFrame(getActivity(), new FragmentProfile());
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -1,4 +1,4 @@
-package com.zeprofile.zeprofile.Test;
+package com.zeprofile.zeprofile.test;
 
 import android.content.res.Configuration;
 import android.support.annotation.NonNull;
@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.zeprofile.zeprofile.MainMenu;
+import com.zeprofile.zeprofile.MainPage;
 import com.zeprofile.zeprofile.R;
-import com.zeprofile.zeprofile.Utils.ZeProfileUtils;
+import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
 public class Discount extends AppCompatActivity {
 
@@ -56,7 +56,7 @@ public class Discount extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.leftTabBotNav:
-                                ZeProfileUtils.moveToNextActivity(Discount.this, MainMenu.class, "emailAddress", email);
+                                ZeProfileUtils.moveToNextActivity(Discount.this, MainPage.class, "emailAddress", email);
                                 break;
                         }
                         return true;

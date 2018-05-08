@@ -9,7 +9,7 @@
         android:toXDelta="-100%p" />
      fade -->
     <alpha
-        android:duration="@integer/duration_horizontal_full_animation"
+        android:duration="@integer/duration_activity_horizontal_translation_full"
         android:fromAlpha="1.0"
         android:toAlpha="0.0" />
 </set>

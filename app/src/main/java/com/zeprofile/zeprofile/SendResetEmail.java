@@ -18,9 +18,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.zeprofile.zeprofile.Utils.DatabaseHelper;
-import com.zeprofile.zeprofile.Utils.SendEmail;
-import com.zeprofile.zeprofile.Utils.ZeProfileUtils;
+import com.zeprofile.zeprofile.utils.DatabaseHelper;
+import com.zeprofile.zeprofile.utils.SendEmail;
+import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package com.zeprofile.zeprofile.Utils;
+package com.zeprofile.zeprofile.base;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

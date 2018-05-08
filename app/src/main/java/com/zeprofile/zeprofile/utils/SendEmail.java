@@ -5,11 +5,13 @@
  ********** Only for testing / demo ***********
  */
 
-package com.zeprofile.zeprofile.Utils;
+package com.zeprofile.zeprofile.utils;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+
+import com.zeprofile.zeprofile.base.Config_TestMail;
 
 import java.util.Properties;
 

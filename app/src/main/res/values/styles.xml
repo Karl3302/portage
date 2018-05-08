@@ -6,7 +6,7 @@
 
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- base application theme. -->
     <style name="Theme.Entrance" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowAnimationStyle">@style/Animation.SlideHorizontal</item>
         <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>

@@ -1,4 +1,4 @@
-package com.zeprofile.zeprofile;
+package com.zeprofile.zeprofile.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,7 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.zeprofile.zeprofile.Utils.ZeProfileUtils;
+import com.zeprofile.zeprofile.R;
+import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
 import java.util.List;
 
@@ -61,34 +62,31 @@ public class FragmentProfile extends Fragment {
         mPublicProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                //mProfileRootViewPager.setCurrentItem(1,false);
-                ZeProfileUtils.loadViewPager(getActivity(), R.id.profileRootViewPager,1);
-                //ZeProfileUtils.moveToNextActivity(inflater.getContext(), ManagePublicProfile.class, "emailAddress", email);
+                ZeProfileUtils.loadMainFrame(getActivity(), new FragmentPublicProfile());
             }
         });
         mVisibilityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZeProfileUtils.loadViewPager(getActivity(), R.id.profileRootViewPager,2);
+                ZeProfileUtils.loadMainFrame(getActivity(), new FragmentVisibility());
             }
         });
         mBankAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZeProfileUtils.loadViewPager(getActivity(), R.id.profileRootViewPager,3);
+                ZeProfileUtils.loadMainFrame(getActivity(), new FragmentBankAccount());
             }
         });
         mUserSettingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZeProfileUtils.loadViewPager(getActivity(), R.id.profileRootViewPager,4);
+                ZeProfileUtils.loadMainFrame(getActivity(), new FragmentUserSettings());
             }
         });
         mAboutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZeProfileUtils.loadViewPager(getActivity(), R.id.profileRootViewPager,5);
+                ZeProfileUtils.loadMainFrame(getActivity(), new FragmentAbout());
             }
         });
     }

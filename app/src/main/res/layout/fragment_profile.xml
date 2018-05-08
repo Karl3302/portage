@@ -1,5 +1,5 @@
-
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<com.zeprofile.zeprofile.base.CustomConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
                 android:paddingTop="13dp"
-                android:text="@string/title_manage_public_profile"
+                android:text="@string/title_fragment_public_profile"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/visibilityBtn"
@@ -54,7 +54,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
                 android:paddingTop="13dp"
-                android:text="@string/title_manage_visibility"
+                android:text="@string/title_fragment_visibility"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/bankAccountBtn"
@@ -76,7 +76,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
                 android:paddingTop="13dp"
-                android:text="@string/title_manage_bank_account"
+                android:text="@string/title_fragment_bank_account"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/userSettingBtn"
@@ -98,7 +98,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
                 android:paddingTop="13dp"
-                android:text="@string/title_manage_settings"
+                android:text="@string/title_fragment_user_settings"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/aboutBtn"
@@ -121,7 +121,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
                 android:paddingTop="13dp"
-                android:text="@string/title_manage_about"
+                android:text="@string/title_fragment_about"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/descriptionParamTextView"
@@ -148,4 +148,4 @@
         </android.support.constraint.ConstraintLayout>
     </android.support.v4.widget.NestedScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</com.zeprofile.zeprofile.base.CustomConstraintLayout>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="duration_horizontal_scale">100</integer>
-    <integer name="duration_horizontal_translate">200</integer>
-    <integer name="duration_horizontal_full_animation">300</integer>
-    <integer name="duration_vertical_full_animation">300</integer>
+    <integer name="duration_activity_horizontal_translation_demi">150</integer>
+    <integer name="duration_activity_horizontal_translation_full">300</integer>
+    <integer name="duration_fragment_horizontal_translation_full">200</integer>
+    <integer name="duration_activity_vertical_translation_full">300</integer>
+
     <integer name="duration_cross_fade_full_animation">300</integer>
     <integer name="duration_cross_fade_half_animation">150</integer>
 </resources>

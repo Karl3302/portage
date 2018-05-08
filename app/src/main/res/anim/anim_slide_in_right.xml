@@ -2,7 +2,7 @@
 <!-- Animation enter the screen from right side -->
 <set xmlns:android="http://schemas.android.com/apk/res/android" >
     <translate
-        android:duration="@integer/duration_horizontal_full_animation"
+        android:duration="@integer/duration_activity_horizontal_translation_full"
         android:fromXDelta="100%p"
         android:toXDelta="0%p" />
     <!-- fade

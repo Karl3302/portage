@@ -1,6 +1,5 @@
-package com.zeprofile.zeprofile;
+package com.zeprofile.zeprofile.fragment;
 
-import android.content.SharedPreferences;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -11,16 +10,19 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
-import com.zeprofile.zeprofile.Utils.DatabaseHelper;
-import com.zeprofile.zeprofile.Utils.ZeProfileUtils;
+import com.zeprofile.zeprofile.R;
+import com.zeprofile.zeprofile.base.CustomRelativeLayout;
+import com.zeprofile.zeprofile.utils.DatabaseHelper;
+import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
-public class FragmentUserSetting extends PreferenceFragment {
+public class FragmentUserSettings extends PreferenceFragment {
     private EditTextPreference mLastNameEditTextPreference, mFirstNameEditTextPreference, mEmailEditTextPreference, mHomeAddressEditTextPreference, mDeliveryAddressEditTextPreference;
     private String lastName, firstName, homeAddress, deliveryAddress;
     private static DatabaseHelper mDataBaseHelper;
@@ -35,6 +37,16 @@ public class FragmentUserSetting extends PreferenceFragment {
         initViews();
         initData();
         configViews();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        CustomRelativeLayout customRelativeLayout = new CustomRelativeLayout(getActivity());
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        customRelativeLayout.setLayoutParams(layoutParams);
+        customRelativeLayout.addView(view);
+        return customRelativeLayout;
     }
 
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
@@ -113,12 +125,15 @@ public class FragmentUserSetting extends PreferenceFragment {
     }
 
     public void configViews() {
+        // Show user profile saved in database
         mEmailEditTextPreference.setText(email);
         mEmailEditTextPreference.setEnabled(false); // Email cant be changed
         mLastNameEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "lastName"));
         mFirstNameEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "firstName"));
         mHomeAddressEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "homeAddress"));
         mDeliveryAddressEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "deliveryAddress"));
+
+        // Set listener for the preferences
         bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_last_name)));
         bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_first_name)));
         bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_email)));
@@ -141,7 +156,7 @@ public class FragmentUserSetting extends PreferenceFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            ZeProfileUtils.loadViewPager(getActivity(),R.id.mainMenuViewPager,0);
+            ZeProfileUtils.loadMainFrame(getActivity(),new FragmentProfile());
             return true;
         }
         return super.onOptionsItemSelected(item);

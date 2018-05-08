@@ -1,4 +1,4 @@
-package com.zeprofile.zeprofile.Test;
+package com.zeprofile.zeprofile.test;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
