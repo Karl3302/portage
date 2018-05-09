@@ -35,9 +35,9 @@ public class FragmentProfileRoot extends Fragment {
         listFragment = new ArrayList<>();
         listFragment.add(new FragmentProfile());
         listFragment.add(new FragmentPublicProfile());
-        listFragment.add(new FragmentVisibility());
+        listFragment.add(new PreferenceFragmentVisibility());
         listFragment.add(new FragmentBankAccount());
-        listFragment.add(new FragmentUserSettings());
+        listFragment.add(new PreferenceFragmentUserSettings());
         listFragment.add(new FragmentAbout());
         mProfileRootViewPager = (ViewPager) mView.findViewById(R.id.profileRootViewPager);
     }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,19 +13,17 @@ import android.widget.TextView;
 import com.zeprofile.zeprofile.R;
 import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
-import java.util.List;
-
 public class FragmentProfile extends Fragment {
     private String email;
     private TextView mDescriptionParamTextView;
     private Button mPublicProfileBtn, mVisibilityBtn, mBankAccountBtn, mUserSettingBtn, mAboutBtn;
     private View mView;
-    private ViewPager mProfileRootViewPager;
-    private List<Fragment> listFragment;
+    //private ViewPager mProfileRootViewPager;
+    //private List<Fragment> listFragment;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_profile, container, false);
+        mView = inflater.inflate(R.layout.fragment_profile, container,false);//TODO false去掉会报错: Unable to start activity ComponentInfo{com.zeprofile.zeprofile/com.zeprofile.zeprofile.MainPage}: java.lang.IllegalStateException: The specified child already has a parent. You must call removeView() on the child's parent first.
 
         initView();
         initData(inflater);
@@ -42,7 +39,7 @@ public class FragmentProfile extends Fragment {
         mUserSettingBtn = (Button) mView.findViewById(R.id.userSettingBtn);
         mAboutBtn = (Button) mView.findViewById(R.id.aboutBtn);
 
-        mProfileRootViewPager = (ViewPager) getActivity().findViewById(R.id.profileRootViewPager);
+       // mProfileRootViewPager = (ViewPager) getActivity().findViewById(R.id.profileRootViewPager);
     }
 
     public void initData(final LayoutInflater inflater) {
@@ -68,7 +65,7 @@ public class FragmentProfile extends Fragment {
         mVisibilityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZeProfileUtils.loadMainFrame(getActivity(), new FragmentVisibility());
+                ZeProfileUtils.loadMainFrame(getActivity(), new PreferenceFragmentVisibility());
             }
         });
         mBankAccountBtn.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +77,7 @@ public class FragmentProfile extends Fragment {
         mUserSettingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZeProfileUtils.loadMainFrame(getActivity(), new FragmentUserSettings());
+                ZeProfileUtils.loadMainFrame(getActivity(), new PreferenceFragmentUserSettings());
             }
         });
         mAboutBtn.setOnClickListener(new View.OnClickListener() {

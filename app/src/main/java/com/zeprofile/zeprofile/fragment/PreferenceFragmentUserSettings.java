@@ -1,11 +1,10 @@
 package com.zeprofile.zeprofile.fragment;
 
-import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.SwitchPreference;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -23,17 +22,16 @@ import com.zeprofile.zeprofile.base.CustomRelativeLayout;
 import com.zeprofile.zeprofile.utils.DatabaseHelper;
 import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
-public class FragmentVisibility extends PreferenceFragment {
-    private SwitchPreference mLocalizationContinuousSwitchPreference, mLocalizationAddressSwitchPreference;
-    private ListPreference mDurationListPreference, mDestinationListPreference;
+public class PreferenceFragmentUserSettings extends PreferenceFragment {
+    private EditTextPreference mLastNameEditTextPreference, mFirstNameEditTextPreference, mEmailEditTextPreference, mHomeAddressEditTextPreference, mDeliveryAddressEditTextPreference;
+    private String lastName, firstName, homeAddress, deliveryAddress;
     private static DatabaseHelper mDataBaseHelper;
     private static String email;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.pref_user_visibility);
+        addPreferencesFromResource(R.xml.pref_user_setting);
         setHasOptionsMenu(true);
 
         initViews();
@@ -55,48 +53,28 @@ public class FragmentVisibility extends PreferenceFragment {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
+
             if (preference instanceof ListPreference) {
                 // For list preferences, look up the correct display value in the preference's 'entries' list.
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
+
                 // Set the summary to reflect the new value.
                 preference.setSummary(
                         index >= 0
                                 ? listPreference.getEntries()[index]
                                 : null);
-                // Log.d("====stringV====","index="+index+"  email="+email);
-                boolean res;
-                switch (preference.getKey()) {
-                    case "user_visibility_limited_duration":
-                        res = mDataBaseHelper.updateUserInfo(email, "duration", stringValue);
-                        break;
-                    case "user_visibility_destination":
-                        res = mDataBaseHelper.updateUserInfo(email, "recipient", stringValue);
-                        break;
-                    default:
-                        res = false;
-                }
-            } else if (preference instanceof SwitchPreference) {
-                //Log.d("====SwitchPref====", "stringV=" + stringValue);
-                boolean res;
-                switch (preference.getKey()) {
-                    case "user_visibility_localization_continuous":
-                        res = mDataBaseHelper.updateUserInfo(email, "locationContinous", stringValue);
-                        break;
-                    case "user_visibility_localization_address":
-                        res = mDataBaseHelper.updateUserInfo(email, "locationAddress", stringValue);
-                        break;
-                    default:
-                        res = false;
-                }
+
             } else if (preference instanceof RingtonePreference) {
                 // For ringtone preferences, look up the correct display value using RingtoneManager.
                 if (TextUtils.isEmpty(stringValue)) {
                     // Empty values correspond to 'silent' (no ringtone).
                     preference.setSummary("silent");
+
                 } else {
                     Ringtone ringtone = RingtoneManager.getRingtone(
                             preference.getContext(), Uri.parse(stringValue));
+
                     if (ringtone == null) {
                         // Clear the summary if there was a lookup error.
                         preference.setSummary(null);
@@ -106,9 +84,28 @@ public class FragmentVisibility extends PreferenceFragment {
                         preference.setSummary(name);
                     }
                 }
+
             } else {
                 // For all other preferences, set the summary to the value's simple string representation.
                 preference.setSummary(stringValue);
+                // Call to change the database
+                boolean res;
+                switch (preference.getKey()) {
+                    case "user_setting_last_name":
+                        res = mDataBaseHelper.updateUserInfo(email, "lastName", stringValue);
+                        break;
+                    case "user_setting_first_name":
+                        res = mDataBaseHelper.updateUserInfo(email, "firstName", stringValue);
+                        break;
+                    case "user_setting_home_address":
+                        res = mDataBaseHelper.updateUserInfo(email, "homeAddress", stringValue);
+                        break;
+                    case "user_setting_delivery_address":
+                        res = mDataBaseHelper.updateUserInfo(email, "deliveryAddress", stringValue);
+                        break;
+                    default:
+                        res = false;
+                }
             }
             return true;
         }
@@ -116,10 +113,11 @@ public class FragmentVisibility extends PreferenceFragment {
 
     public void initViews() {
         mDataBaseHelper = new DatabaseHelper(getActivity());
-        mLocalizationContinuousSwitchPreference = (SwitchPreference) findPreference(getString(R.string.key_preference_localization_continuous));
-        mLocalizationAddressSwitchPreference = (SwitchPreference) findPreference(getString(R.string.key_preference_localization_address));
-        mDurationListPreference = (ListPreference) findPreference(getString(R.string.key_preference_duration));
-        mDestinationListPreference = (ListPreference) findPreference(getString(R.string.key_preference_destination));
+        mLastNameEditTextPreference = (EditTextPreference) findPreference(getString(R.string.key_preference_last_name));
+        mFirstNameEditTextPreference = (EditTextPreference) findPreference(getString(R.string.key_preference_first_name));
+        mEmailEditTextPreference = (EditTextPreference) findPreference(getString(R.string.key_preference_email));
+        mHomeAddressEditTextPreference = (EditTextPreference) findPreference(getString(R.string.key_preference_home_address));
+        mDeliveryAddressEditTextPreference = (EditTextPreference) findPreference(getString(R.string.key_preference_delivery_address));
     }
 
     public void initData() {
@@ -127,44 +125,38 @@ public class FragmentVisibility extends PreferenceFragment {
     }
 
     public void configViews() {
-        if ((mDataBaseHelper.getUserInfo(email, "locationContinous") != null) && (mDataBaseHelper.getUserInfo(email, "locationContinous") == "true"))
-            mLocalizationContinuousSwitchPreference.setChecked(true);
-        else mLocalizationContinuousSwitchPreference.setChecked(false);
+        // Show user profile saved in database
+        mEmailEditTextPreference.setText(email);
+        mEmailEditTextPreference.setEnabled(false); // Email cant be changed
+        mLastNameEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "lastName"));
+        mFirstNameEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "firstName"));
+        mHomeAddressEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "homeAddress"));
+        mDeliveryAddressEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "deliveryAddress"));
 
-        if ((mDataBaseHelper.getUserInfo(email, "locationAddress") != null) && (mDataBaseHelper.getUserInfo(email, "locationAddress") == "true"))
-            mLocalizationAddressSwitchPreference.setChecked(true);
-        else mLocalizationAddressSwitchPreference.setChecked(false);
-
-        mDurationListPreference.setValue(mDataBaseHelper.getUserInfo(email, "duration"));
-        mDestinationListPreference.setValue(mDataBaseHelper.getUserInfo(email, "recipient"));
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_localization_continuous)));
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_localization_address)));
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_duration)));
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_destination)));
+        // Set listener for the preferences
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_last_name)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_first_name)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_email)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_home_address)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_delivery_address)));
     }
 
-    private static void bindPreferenceSummaryToValue(Preference preference) {
+    private static void bindPreferenceSummaryToValue(Preference preference) { // default: static
         // Set the listener to watch for value changes.
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
 
-        if (preference instanceof CheckBoxPreference || preference instanceof SwitchPreference) {
-            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                    PreferenceManager
-                            .getDefaultSharedPreferences(preference.getContext())
-                            .getBoolean(preference.getKey(), false));
-        } else {
-            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                    PreferenceManager
-                            .getDefaultSharedPreferences(preference.getContext())
-                            .getString(preference.getKey(), ""));
-        }
+        // Trigger the listener immediately with the preference's current value.
+        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
+                PreferenceManager
+                        .getDefaultSharedPreferences(preference.getContext())
+                        .getString(preference.getKey(), ""));
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            ZeProfileUtils.loadMainFrame(getActivity(), new FragmentProfile());
+            ZeProfileUtils.loadMainFrame(getActivity(),new FragmentProfile());
             return true;
         }
         return super.onOptionsItemSelected(item);

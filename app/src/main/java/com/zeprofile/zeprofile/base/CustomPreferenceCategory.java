@@ -1,6 +1,7 @@
 package com.zeprofile.zeprofile.base;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.preference.PreferenceCategory;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -26,7 +27,8 @@ public class CustomPreferenceCategory extends PreferenceCategory {
     @Override
     protected void onBindView(View view) {
         super.onBindView(view);
+        //view.setBackgroundColor(Color.WHITE);
         TextView titleView = (TextView) view.findViewById(android.R.id.title);
-        titleView.setTextColor(ContextCompat.getColor(getContext(), R.color.grey));
+        titleView.setTextColor(ContextCompat.getColor(getContext(), R.color.zeprofileDarkGreen));
     }
 }

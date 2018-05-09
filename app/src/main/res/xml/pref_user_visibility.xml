@@ -7,7 +7,7 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="@string/key_preference_localization_continuous"
-            android:title="@string/text_localization_continuous" />
+            android:title="@string/text_localization_continuous"/>
         <SwitchPreference
             android:defaultValue="false"
             android:key="@string/key_preference_localization_address"
@@ -38,5 +38,15 @@
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
             android:title="@string/title_destination_user_visibility" />
+    </com.zeprofile.zeprofile.base.CustomPreferenceCategory>
+
+    <!--TODO 目前只能实现数字的滚动式选择器-->
+    <com.zeprofile.zeprofile.base.CustomPreferenceCategory
+        android:key="user_setting_category_test"
+        android:title="Test_Wheel_Picker">
+        <com.zeprofile.zeprofile.base.NumberPickerPreference
+            android:defaultValue="1"
+            android:key="key_number"
+            android:title="Number Picker" />
     </com.zeprofile.zeprofile.base.CustomPreferenceCategory>
 </PreferenceScreen>

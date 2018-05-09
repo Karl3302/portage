@@ -1,9 +1,11 @@
-package com.zeprofile.zeprofile.base;
+package com.zeprofile.zeprofile.test;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.animation.Interpolator;
+
+import com.zeprofile.zeprofile.base.CustomDurationScroller;
 
 import java.lang.reflect.Field;
 

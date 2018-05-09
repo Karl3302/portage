@@ -21,7 +21,6 @@ import com.zeprofile.zeprofile.fragment.FragmentProfile;
 import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
 public class MainPage extends AppCompatActivity {
-
     // Components
     private Toolbar mMainPageToolbar;
     private ActionBar mMainPageActionBar;
@@ -43,7 +42,7 @@ public class MainPage extends AppCompatActivity {
     // Variables
     private String email;
 
-
+    //TODO 手机一翻转就回到profile界面
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);

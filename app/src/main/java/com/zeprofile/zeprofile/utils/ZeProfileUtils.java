@@ -96,9 +96,9 @@ public class ZeProfileUtils {
             case "FragmentProfile": mTitle=activity.getBaseContext().getResources().getString(R.string.title_fragment_profile);break;
             case "FragmentDiscount": mTitle=activity.getBaseContext().getResources().getString(R.string.title_fragment_discount);break;
             case "FragmentPublicProfile": mTitle=activity.getBaseContext().getResources().getString(R.string.title_fragment_public_profile);break;
-            case "FragmentVisibility": mTitle=activity.getBaseContext().getResources().getString(R.string.title_fragment_visibility);break;
+            case "PreferenceFragmentVisibility": mTitle=activity.getBaseContext().getResources().getString(R.string.title_fragment_visibility);break;
             case "FragmentBankAccount": mTitle=activity.getBaseContext().getResources().getString(R.string.title_fragment_bank_account);break;
-            case "FragmentUserSettings": mTitle=activity.getBaseContext().getResources().getString(R.string.title_fragment_user_settings);break;
+            case "PreferenceFragmentUserSettings": mTitle=activity.getBaseContext().getResources().getString(R.string.title_fragment_user_settings);break;
             case "FragmentAbout": mTitle=activity.getBaseContext().getResources().getString(R.string.title_fragment_about);break;
             default:mTitle="[E]ZeProfileUtils: Title_not_found";break;
         }
@@ -111,7 +111,7 @@ public class ZeProfileUtils {
             if (mActionBar != null) mActionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        /**
+        /*
          * Set animation
          * Plan A - New fragment slides in the screen from the left side, current fragment slides out by the right side
          * Plan B - New fragment slides in the screen from the right side, current fragment slides out by the left side
