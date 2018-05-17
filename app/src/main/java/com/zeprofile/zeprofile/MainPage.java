@@ -91,8 +91,10 @@ public class MainPage extends AppCompatActivity {
 
             }
         };
-        getFragmentManager().addOnBackStackChangedListener(mListener);
-*/
+        getFragmentManager().addOnBackStackChangedListener(mListener);*/
+
+        Log.d("--- LoadFragment ---","number of frags="+getFragmentManager().getFragments().size()+"fragment in container="+getFragmentManager().findFragmentById(R.id.mainPageFrameLayout));
+
         initViews();
         initData();
         configViews(savedInstanceState);
@@ -196,14 +198,12 @@ public class MainPage extends AppCompatActivity {
 
         // ---- Loading the Root Fragment ----
         if (savedInstanceState == null) { // Load the root fragment after the login activity
-            ZeProfileUtils.shortBottomToast(this.getBaseContext(), "Loading the root fragment");
+            Log.d("--- LoadFragment ---", "[MainPage] Loading the root fragment");
             ZeProfileUtils.loadMainFrame(MainPage.this, FragmentProfile.class.getSimpleName());
-            ZeProfileUtils.setMainFrameToolBar(MainPage.this);
         } else { // Reload the fragment after the SCREEN ORIENTATION has changed (for the title and back button, the view is maintained by fragment itself)
             //TODO 内存重启时调用的逻辑没写
-            ZeProfileUtils.shortBottomToast(this.getBaseContext(), "Reload the fragment");
-            ZeProfileUtils.loadMainFrame(MainPage.this, ZeProfileUtils.getActiveFragment(getFragmentManager()).getClass().getSimpleName());
-            ZeProfileUtils.setMainFrameToolBar(MainPage.this);
+            Log.d("--- LoadFragment ---", "[MainPage] Reload the fragment");
+            ZeProfileUtils.loadMainFrame(MainPage.this,ZeProfileUtils.getCurrentFragmentName());
         }
 
         // --- Configure the BottomNavigationView ---
@@ -213,7 +213,6 @@ public class MainPage extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.leftTabBotNav: // Left Button : Profile
                         ZeProfileUtils.loadMainFrame(MainPage.this, FragmentProfile.class.getSimpleName());
-                        ZeProfileUtils.setMainFrameToolBar(MainPage.this);
                         return true;
                     case R.id.rightTabBotNav: // Right Button : Discount
                         ZeProfileUtils.loadMainFrame(MainPage.this, FragmentDiscount.class.getSimpleName());
@@ -327,16 +326,13 @@ public class MainPage extends AppCompatActivity {
                 break;
             case MotionEvent.ACTION_UP:
                 switch (mTouchIntent) {
-                   /* case TOUCH_INTENT_SWIPE_LEFT:
+                    case TOUCH_INTENT_SWIPE_LEFT:
                         mMainPageBottomNavigationView.getMenu().getItem(1).setChecked(true);
                         ZeProfileUtils.loadMainFrame(MainPage.this, FragmentDiscount.class.getSimpleName());
-                        break;*/
+                        break;
                     case TOUCH_INTENT_SWIPE_RIGHT:
                         mMainPageBottomNavigationView.getMenu().getItem(0).setChecked(true);
-                        if (!(ZeProfileUtils.getActiveFragment(getFragmentManager()) instanceof FragmentProfile) && !(ZeProfileUtils.getActiveFragment(getFragmentManager()) instanceof FragmentDiscount)) {
-                            MainPage.this.getFragmentManager().popBackStackImmediate();
-                            ZeProfileUtils.setMainFrameToolBar(MainPage.this);
-                        }
+                        ZeProfileUtils.loadMainFrame(MainPage.this, FragmentProfile.class.getSimpleName());
                         break;
                     default:
                         break;

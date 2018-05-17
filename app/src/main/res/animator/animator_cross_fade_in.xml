@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:ordering="sequentially">
-    <!-- set -->
+    <!-- Hide the new page and wait the current page to finish fade out -->
     <objectAnimator
         android:duration="@integer/duration_cross_fade_half_animation"
         android:propertyName="Alpha"
         android:valueFrom="0"
         android:valueTo="0"
         android:valueType="floatType" />
-
+    <!-- Animation of the new page -->
     <set android:ordering="together">
         <objectAnimator
             android:duration="@integer/duration_cross_fade_half_animation"

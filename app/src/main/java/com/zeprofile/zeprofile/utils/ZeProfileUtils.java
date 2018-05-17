@@ -26,10 +26,9 @@ import com.zeprofile.zeprofile.fragment.FragmentPublicProfile;
 import com.zeprofile.zeprofile.fragment.PreferenceFragmentUserSettings;
 import com.zeprofile.zeprofile.fragment.PreferenceFragmentVisibility;
 
-import java.lang.reflect.Constructor;
-
 public class ZeProfileUtils {
     private static Toast toast;
+    private static String currentFragmentName;
     /*
      * Les trois toast sont distinquer par leur position (Gravity.BOTTOM/TOP/CENTER)
      * En cas de duplicate (ex: en ajouter un autre toast en top), le cas "else" va créer des problèmes
@@ -120,27 +119,28 @@ public class ZeProfileUtils {
      *                        - PreferenceFragment
      */
     public static void loadMainFrame(@NonNull Activity activity, @NonNull String newFragmentName) {
-        Fragment currentFragment = getActiveFragment(activity.getFragmentManager());
+        ActionBar mActionBar = (ActionBar) ((AppCompatActivity) activity).getSupportActionBar();
+        TextView mTextView = activity.findViewById(R.id.mainPageToolbar).findViewById(R.id.mainPageTitleToolbar);
         /*Reload the main frame when:
          - the container(mainPageFrameLayout) is empty
          - the newFragment is not in the container*/
-        if ((currentFragment == null) || !(currentFragment.getClass().getSimpleName().equals(newFragmentName))) {
+        if ((currentFragmentName == null) || !(currentFragmentName.equals(newFragmentName)) || (activity.getFragmentManager().findFragmentById(R.id.mainPageFrameLayout) == null)) {
+            Fragment currentFragment = activity.getFragmentManager().findFragmentByTag(currentFragmentName);
             FragmentTransaction fragmentTransaction = activity.getFragmentManager().beginTransaction();
             /*Set animation
-            New Fragment is "Fragment Profile" or "Fragment Discount" → slide horizontal
-            New Fragment is others → slide vertical*/
-            if(newFragmentName.equals(FragmentProfile.class.getSimpleName())||newFragmentName.equals(FragmentDiscount.class.getSimpleName())){
-                fragmentTransaction.setCustomAnimations(R.animator.animator_fade_in, R.animator.animator_fade_out);
-            }else{
-                fragmentTransaction.setCustomAnimations(R.animator.animator_slide_in_right, R.animator.animator_slide_out_left, R.animator.animator_slide_in_left, R.animator.animator_slide_out_right);
+            - New Fragment is "Fragment Profile"  → slide in from left
+            - New Fragment is others              → slide in from right*/
+            if (newFragmentName.equals(FragmentProfile.class.getSimpleName())) {
+                fragmentTransaction.setCustomAnimations(R.animator.animator_slide_in_left, R.animator.animator_slide_out_right);
+            } else {
+                fragmentTransaction.setCustomAnimations(R.animator.animator_slide_in_right, R.animator.animator_slide_out_left);
             }
             // Load mainFrame
-            if (currentFragment == null) { // If container is empty -> load fragmentProfile
+            if ((currentFragmentName == null)||((activity.getFragmentManager().findFragmentById(R.id.mainPageFrameLayout) == null))) { // If currentFragment/container is null -> load fragmentProfile
                 Log.d("--- LoadFragment ---", "container is empty, creating the profile fragment");
                 fragmentTransaction.replace(R.id.mainPageFrameLayout, new FragmentProfile(), newFragmentName);
-                fragmentTransaction.addToBackStack(newFragmentName);
             } else {
-                Log.d("--- LoadFragment ---", "container is not empty, old fragment=" + currentFragment);
+                Log.d("--- LoadFragment ---", "container is not empty, old fragment=" + currentFragmentName);
                 if (activity.getFragmentManager().findFragmentByTag(newFragmentName) == null) { // If the new fragment was not added
                     // Create the instance of the new fragment
                     Fragment newFragment;
@@ -173,67 +173,59 @@ public class ZeProfileUtils {
                     }
                     Log.d("--- LoadFragment ---", "fragmentInstance is not exist, new fragment = " + newFragment);
                     fragmentTransaction.hide(currentFragment).add(R.id.mainPageFrameLayout, newFragment, newFragmentName); // hide current fragment, add new fragment
-                    fragmentTransaction.addToBackStack(newFragmentName);
                 } else {
                     Log.d("--- LoadFragment ---", "fragmentInstance already exist, new fragment = " + activity.getFragmentManager().findFragmentByTag(newFragmentName));
                     fragmentTransaction.hide(currentFragment).show(activity.getFragmentManager().findFragmentByTag(newFragmentName)); // hide current fragment, show the new fragment
-                    fragmentTransaction.addToBackStack(newFragmentName);
                 }
             }
             fragmentTransaction.commit();
-            activity.getFragmentManager().executePendingTransactions();// Force fragmentTransaction to execute immediately
-            setMainFrameToolBar(activity);
+            currentFragmentName = newFragmentName;
+        } else {
+            Log.d("--- LoadFragment ---", "[ZeProfileUtils] currentFragmentName==newFragmentName)");
+        }
+        // Set activity title
+        String mTitle;
+        switch (currentFragmentName) {
+            case "FragmentProfile":
+                mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_profile);
+                break;
+            case "FragmentDiscount":
+                mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_discount);
+                break;
+            case "FragmentPublicProfile":
+                mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_public_profile);
+                break;
+            case "PreferenceFragmentVisibility":
+                mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_visibility);
+                break;
+            case "FragmentBankAccount":
+                mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_bank_account);
+                break;
+            case "PreferenceFragmentUserSettings":
+                mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_user_settings);
+                break;
+            case "FragmentAbout":
+                mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_about);
+                break;
+            default:
+                mTitle = "[E]ZeProfileUtils: Title_not_found";
+                break;
+        }
+        mTextView.setText(mTitle);
+        // Set back button (depends on the newFragmentClass)
+        // Fragments "Discount" and "Profile" don't need a back button.
+        if (currentFragmentName.equals(FragmentDiscount.class.getSimpleName()) || currentFragmentName.equals(FragmentProfile.class.getSimpleName())) {
+            if (mActionBar != null) mActionBar.setDisplayHomeAsUpEnabled(false);
+        } else {
+            if (mActionBar != null) mActionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 
-    /**
-     * Set the title and the back button for the MainMenu
-     */
-    public static void setMainFrameToolBar(Activity activity) {
-        ActionBar mActionBar = (ActionBar) ((AppCompatActivity) activity).getSupportActionBar();
-        TextView mTextView = activity.findViewById(R.id.mainPageToolbar).findViewById(R.id.mainPageTitleToolbar);
-        Fragment currentFragment = getActiveFragment(activity.getFragmentManager());
-        String currentFragmentName;
-        if (currentFragment != null) {
-            currentFragmentName = currentFragment.getClass().getSimpleName();
-            // Set activity title
-            String mTitle;
-            switch (currentFragmentName) {
-                case "FragmentProfile":
-                    mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_profile);
-                    break;
-                case "FragmentDiscount":
-                    mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_discount);
-                    break;
-                case "FragmentPublicProfile":
-                    mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_public_profile);
-                    break;
-                case "PreferenceFragmentVisibility":
-                    mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_visibility);
-                    break;
-                case "FragmentBankAccount":
-                    mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_bank_account);
-                    break;
-                case "PreferenceFragmentUserSettings":
-                    mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_user_settings);
-                    break;
-                case "FragmentAbout":
-                    mTitle = activity.getBaseContext().getResources().getString(R.string.title_fragment_about);
-                    break;
-                default:
-                    mTitle = "[E]ZeProfileUtils: Title_not_found";
-                    break;
-            }
-            mTextView.setText(mTitle);
-            // Set back button (depends on the newFragmentClass)
-            // Fragments "Discount" and "Profile" don't need a back button.
-            if (currentFragmentName.equals(FragmentDiscount.class.getSimpleName()) || currentFragmentName.equals(FragmentProfile.class.getSimpleName())) {
-                if (mActionBar != null) mActionBar.setDisplayHomeAsUpEnabled(false);
-            } else {
-                if (mActionBar != null) mActionBar.setDisplayHomeAsUpEnabled(true);
-            }
-        }
+
+    public static String getCurrentFragmentName() {
+        return currentFragmentName;
     }
+
 
     /**
      * Get the current displayed fragment in mainFrame of MainMenu
@@ -241,11 +233,11 @@ public class ZeProfileUtils {
      * @param fragmentManager
      * @return the current fragment
      */
-    public static Fragment getActiveFragment(FragmentManager fragmentManager) {
-        if (fragmentManager.getBackStackEntryCount() == 0) {
-            return null;
-        }
-        String tag = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount()-1).getName();
-        return fragmentManager.findFragmentByTag(tag);
-    }
+//    public static Fragment getActiveFragment(FragmentManager fragmentManager) {
+//        if (fragmentManager.getBackStackEntryCount() == 0) {
+//            return null;
+//        }
+//        String tag = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount()-1).getName();
+//        return fragmentManager.findFragmentByTag(tag);
+//    }
 }
