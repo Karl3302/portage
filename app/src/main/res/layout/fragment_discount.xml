@@ -5,37 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recycleView_FragmentDiscount"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleView_FragmentDiscount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</android.support.v7.widget.RecyclerView>
-   <!-- <Button
-        android:id="@+id/bt"
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FragmentmesOffres"
-        android:textAllCaps="false"
+        android:layout_height="163dp"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/recycleView_FragmentDiscount"
+        tools:layout_editor_absoluteX="173dp"
+        tools:layout_editor_absoluteY="58dp" />
+    <!-- <Button
+         android:id="@+id/bt"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="FragmentmesOffres"
+         android:textAllCaps="false"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.5"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="149dp"
-        android:layout_height="34dp"
-        android:gravity="center"
-        android:text="Mes_Offres"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/bt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />-->
+     <TextView
+         android:id="@+id/textView2"
+         android:layout_width="149dp"
+         android:layout_height="34dp"
+         android:gravity="center"
+         android:text="Mes_Offres"
+         android:textColor="@color/black"
+         android:textSize="14sp"
+         app:layout_constraintBottom_toTopOf="@+id/bt"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.5"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_chainStyle="packed" />-->
 
 </com.zeprofile.zeprofile.base.CustomConstraintLayout>

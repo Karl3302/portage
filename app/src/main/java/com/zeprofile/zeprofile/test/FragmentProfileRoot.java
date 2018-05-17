@@ -1,4 +1,4 @@
-package com.zeprofile.zeprofile.fragment;
+package com.zeprofile.zeprofile.test;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,6 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zeprofile.zeprofile.R;
+import com.zeprofile.zeprofile.fragment.FragmentAbout;
+import com.zeprofile.zeprofile.fragment.FragmentBankAccount;
+import com.zeprofile.zeprofile.fragment.FragmentProfile;
+import com.zeprofile.zeprofile.fragment.FragmentPublicProfile;
+import com.zeprofile.zeprofile.fragment.PreferenceFragmentUserSettings;
+import com.zeprofile.zeprofile.fragment.PreferenceFragmentVisibility;
 import com.zeprofile.zeprofile.utils.ZeProfileUtils;
 
 import java.util.ArrayList;

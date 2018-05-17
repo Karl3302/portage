@@ -29,6 +29,8 @@ public class PreferenceFragmentVisibility extends PreferenceFragment {
     private ListPreference mDurationListPreference, mDestinationListPreference;
     private static DatabaseHelper mDataBaseHelper;
     private static String email;
+    // Save the created view
+    private CustomRelativeLayout savedCustomRelativeLayout;
 
 
     @Override
@@ -36,6 +38,8 @@ public class PreferenceFragmentVisibility extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.pref_user_visibility);
         setHasOptionsMenu(true);
+        // Maintain the current instance when the screen orientation has changed
+        setRetainInstance(true);
 
         initViews();
         initData();
@@ -44,12 +48,14 @@ public class PreferenceFragmentVisibility extends PreferenceFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-        CustomRelativeLayout customRelativeLayout = new CustomRelativeLayout(getActivity());
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        customRelativeLayout.setLayoutParams(layoutParams);
-        customRelativeLayout.addView(view);
-        return customRelativeLayout;
+        if (savedCustomRelativeLayout == null) {
+            View mView = super.onCreateView(inflater, container, savedInstanceState);
+            savedCustomRelativeLayout = new CustomRelativeLayout(getActivity());
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            savedCustomRelativeLayout.setLayoutParams(layoutParams);
+            savedCustomRelativeLayout.addView(mView);
+        }
+        return savedCustomRelativeLayout;
     }
 
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
@@ -65,7 +71,7 @@ public class PreferenceFragmentVisibility extends PreferenceFragment {
                         index >= 0
                                 ? listPreference.getEntries()[index]
                                 : null);
-                // Log.d("====stringV====","index="+index+"  email="+email);
+                // Set the value for the database
                 boolean res;
                 switch (preference.getKey()) {
                     case "user_visibility_limited_duration":
@@ -78,7 +84,10 @@ public class PreferenceFragmentVisibility extends PreferenceFragment {
                         res = false;
                 }
             } else if (preference instanceof SwitchPreference) {
-                //Log.d("====SwitchPref====", "stringV=" + stringValue);
+            /*    // Set the summary
+                if(mDataBaseHelper.getUserInfo(email,"locationContinous")=="true")
+                ((SwitchPreference) preference).setChecked(res);
+              */  // Set the value for the database
                 boolean res;
                 switch (preference.getKey()) {
                     case "user_visibility_localization_continuous":
@@ -128,11 +137,11 @@ public class PreferenceFragmentVisibility extends PreferenceFragment {
     }
 
     public void configViews() {
-        if ((mDataBaseHelper.getUserInfo(email, "locationContinous") != null) && (mDataBaseHelper.getUserInfo(email, "locationContinous") == "true"))
+        if ((mDataBaseHelper.getUserInfo(email, "locationContinous") != null) && (mDataBaseHelper.getUserInfo(email, "locationContinous").equals("true")))
             mLocalizationContinuousSwitchPreference.setChecked(true);
         else mLocalizationContinuousSwitchPreference.setChecked(false);
 
-        if ((mDataBaseHelper.getUserInfo(email, "locationAddress") != null) && (mDataBaseHelper.getUserInfo(email, "locationAddress") == "true"))
+        if ((mDataBaseHelper.getUserInfo(email, "locationAddress") != null) && (mDataBaseHelper.getUserInfo(email, "locationAddress").equals("true")))
             mLocalizationAddressSwitchPreference.setChecked(true);
         else mLocalizationAddressSwitchPreference.setChecked(false);
 
@@ -165,7 +174,8 @@ public class PreferenceFragmentVisibility extends PreferenceFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            ZeProfileUtils.loadMainFrame(getActivity(), new FragmentProfile());
+            getActivity().getFragmentManager().popBackStackImmediate();
+            ZeProfileUtils.setMainFrameToolBar(getActivity());
             return true;
         }
         return super.onOptionsItemSelected(item);

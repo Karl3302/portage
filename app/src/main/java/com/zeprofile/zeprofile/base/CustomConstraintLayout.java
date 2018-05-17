@@ -7,6 +7,7 @@ import android.view.ViewTreeObserver;
 
 public class CustomConstraintLayout extends ConstraintLayout {
     private float xFraction = 0;
+    private float yFraction = 0;
 
     public CustomConstraintLayout(Context context) {
         super(context);
@@ -46,5 +47,31 @@ public class CustomConstraintLayout extends ConstraintLayout {
 
     public float getXFraction() {
         return this.xFraction;
+    }
+
+    public void setYFraction(final float fraction) {
+        this.yFraction = fraction;
+
+        if (getWidth() == 0) {
+            if (preDrawListener == null) {
+                preDrawListener = new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        getViewTreeObserver().removeOnPreDrawListener(preDrawListener);
+                        setYFraction(yFraction);
+                        return true;
+                    }
+                };
+                getViewTreeObserver().addOnPreDrawListener(preDrawListener);
+            }
+            return;
+        }
+
+        float translationY = getHeight() * fraction;
+        setTranslationY(translationY);
+    }
+
+    public float getYFraction() {
+        return this.yFraction;
     }
 }
