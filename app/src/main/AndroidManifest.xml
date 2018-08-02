@@ -5,9 +5,9 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:categoryandroid="http://schemas.android.com/tools"
-    package="com.zeprofile.zeprofile">
+    package="com.zeprofile.application">
 
-    <!-- For testing code reset by email (email sent by app) -->
+    <!-- Demand the permission of using Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- For testing / demo -->
