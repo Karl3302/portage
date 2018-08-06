@@ -106,6 +106,7 @@ public class ResetPassword extends AppCompatActivity {
                             }
                         }
                         public void onFailure(Call<ResetPasswordResponse> call, Throwable t) {
+                            ZeProfileUtils.shortCenterToast(getApplicationContext(), getString(R.string.error_network));
                         }
                     });
 

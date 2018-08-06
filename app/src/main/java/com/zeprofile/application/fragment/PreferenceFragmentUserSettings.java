@@ -19,14 +19,22 @@ import android.widget.RelativeLayout;
 
 import com.zeprofile.application.R;
 import com.zeprofile.application.base.CustomRelativeLayout;
+import com.zeprofile.application.base.UserInfoBean;
+import com.zeprofile.application.utils.ApiZeprofile;
 import com.zeprofile.application.utils.DatabaseHelper;
+import com.zeprofile.application.utils.RetrofitBuilder;
 import com.zeprofile.application.utils.ZeProfileUtils;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class PreferenceFragmentUserSettings extends PreferenceFragment {
     private EditTextPreference mLastNameEditTextPreference, mFirstNameEditTextPreference, mEmailEditTextPreference, mHomeAddressEditTextPreference, mDeliveryAddressEditTextPreference;
     private String lastName, firstName, homeAddress, deliveryAddress;
     private static DatabaseHelper mDataBaseHelper;
-    private static String email;
+    private static String token;
     // Save the created view
     private CustomRelativeLayout savedCustomRelativeLayout;
 
@@ -40,7 +48,7 @@ public class PreferenceFragmentUserSettings extends PreferenceFragment {
 
         initViews();
         initData();
-        configViews();
+        getUserInfo();
     }
 
     @Override
@@ -97,16 +105,16 @@ public class PreferenceFragmentUserSettings extends PreferenceFragment {
                 boolean res;
                 switch (preference.getKey()) {
                     case "user_setting_last_name":
-                        res = mDataBaseHelper.updateUserInfo(email, "lastName", stringValue);
+                        res = mDataBaseHelper.updateUserInfo(token, "lastName", stringValue);
                         break;
                     case "user_setting_first_name":
-                        res = mDataBaseHelper.updateUserInfo(email, "firstName", stringValue);
+                        res = mDataBaseHelper.updateUserInfo(token, "firstName", stringValue);
                         break;
                     case "user_setting_home_address":
-                        res = mDataBaseHelper.updateUserInfo(email, "homeAddress", stringValue);
+                        res = mDataBaseHelper.updateUserInfo(token, "homeAddress", stringValue);
                         break;
                     case "user_setting_delivery_address":
-                        res = mDataBaseHelper.updateUserInfo(email, "deliveryAddress", stringValue);
+                        res = mDataBaseHelper.updateUserInfo(token, "deliveryAddress", stringValue);
                         break;
                     default:
                         res = false;
@@ -126,24 +134,80 @@ public class PreferenceFragmentUserSettings extends PreferenceFragment {
     }
 
     public void initData() {
-        email = ZeProfileUtils.getStringFromLastActivity(getActivity(), "emailAddress");
+        token = ZeProfileUtils.getStringFromLastActivity(getActivity(), "token");
     }
 
-    public void configViews() {
-        // Show user profile saved in database
-        mEmailEditTextPreference.setText(email);
-        mEmailEditTextPreference.setEnabled(false); // Email cant be changed
-        mLastNameEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "lastName"));
-        mFirstNameEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "firstName"));
-        mHomeAddressEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "homeAddress"));
-        mDeliveryAddressEditTextPreference.setText(mDataBaseHelper.getUserInfo(email, "deliveryAddress"));
+    public void getUserInfo() {
+//        // Show user profile saved in database
+//        mEmailEditTextPreference.setText(token);
+//        mEmailEditTextPreference.setEnabled(false); // Email cant be changed
+//        mLastNameEditTextPreference.setText(mDataBaseHelper.getUserInfo(token, "lastName"));
+//        mFirstNameEditTextPreference.setText(mDataBaseHelper.getUserInfo(token, "firstName"));
+//        mHomeAddressEditTextPreference.setText(mDataBaseHelper.getUserInfo(token, "homeAddress"));
+//        mDeliveryAddressEditTextPreference.setText(mDataBaseHelper.getUserInfo(token, "deliveryAddress"));
+//
+//        // Set listener for the preferences
+//        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_last_name)));
+//        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_first_name)));
+//        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_email)));
+//        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_home_address)));
+//        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_delivery_address)));
+        Retrofit retrofit = RetrofitBuilder.getRetrofit();
+        ApiZeprofile netService = retrofit.create(ApiZeprofile.class);
+        Call<UserInfoBean> call = netService.getUserInfo("Bearer "+token);
+        call.enqueue(new Callback<UserInfoBean>() {
+            public void onResponse(Call<UserInfoBean> call, Response<UserInfoBean> response) {
+                if (response.isSuccessful()) {
+                    //Log.d("--- LicenseSetting ---", "[Network_updateLicenseSetting] status code = " + response.code()+ "\n message = " + response.message());//
+                    // Get user's firstname
+                    mFirstNameEditTextPreference.setText(response.body().getFirstname());
+                    bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_first_name)));
+                    // Get user's lastname
+                    mLastNameEditTextPreference.setText(response.body().getLastname());
+                    bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_last_name)));
+                    // Get user's email
+                    mEmailEditTextPreference.setText(response.body().getEmail());
+                    bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_email)));
+                    // Get user's billing address
+                    mHomeAddressEditTextPreference.setText(response.body().getBillingAddress());
+                    bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_home_address)));
+                    // Get user's posting address
+                    mDeliveryAddressEditTextPreference.setText(response.body().getPostingAddress());
+                    bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_delivery_address)));
+                } else {
+                    //Log.d("--- LicenseSetting ---", "[Network_updateLicenseSetting] status code = " + response.code() + "\n message = " + response.message());// + "\n raw = " + response.raw());
+                    ZeProfileUtils.shortCenterToast(getActivity().getBaseContext(), "Error: server return "+response.code());
+                }
+            }
+            public void onFailure(Call<UserInfoBean> call, Throwable t) {
+                ZeProfileUtils.shortCenterToast(getActivity().getBaseContext(), getString(R.string.error_network));
+            }
+        });
+    }
 
-        // Set listener for the preferences
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_last_name)));
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_first_name)));
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_email)));
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_home_address)));
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.key_preference_delivery_address)));
+    public void updateUserInfo(){
+        PreferenceFragmentUserSettingsRequest preferenceFragmentUserSettingRequest = new PreferenceFragmentUserSettingsRequest(
+                mFirstNameEditTextPreference.getText(),
+                mLastNameEditTextPreference.getText(),
+                mEmailEditTextPreference.getText(),
+                mHomeAddressEditTextPreference.getText(),"75000","Paris",
+                mDeliveryAddressEditTextPreference.getText(),"75000","Paris");
+        Retrofit retrofit = RetrofitBuilder.getRetrofit();
+        ApiZeprofile netService = retrofit.create(ApiZeprofile.class);
+        Call<UserInfoBean> call = netService.putUserInfo("Bearer "+token,preferenceFragmentUserSettingRequest);
+        call.enqueue(new Callback<UserInfoBean>() {
+            public void onResponse(Call<UserInfoBean> call, Response<UserInfoBean> response) {
+                if (response.isSuccessful()) {
+                    //Log.d("--- LicenseSetting ---", "[Network_updateLicenseSetting] status code = " + response.code()+ "\n message = " + response.message());//+ "\n raw = " + response.raw() +"\n email="+response.body().getEmail());
+                } else {
+                    //Log.d("--- LicenseSetting ---", "[Network_updateLicenseSetting] status code = " + response.code() + "\n message = " + response.message());// + "\n raw = " + response.raw());
+                    ZeProfileUtils.shortCenterToast(getActivity().getBaseContext(), "Error: server return "+response.code());
+                }
+            }
+            public void onFailure(Call<UserInfoBean> call, Throwable t) {
+                ZeProfileUtils.shortCenterToast(getActivity().getBaseContext(), getString(R.string.error_network));
+            }
+        });
     }
 
     private static void bindPreferenceSummaryToValue(Preference preference) { // default: static
@@ -165,5 +229,49 @@ public class PreferenceFragmentUserSettings extends PreferenceFragment {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public class PreferenceFragmentUserSettingsRequest {
+        private String firstname;
+        private String lastname;
+        private String email;
+        private String billingAddress;
+        private String billingAddressPostalCode;
+        private String billingAddressCity;
+        private String postingAddress;
+        private String postingAddressPostalCode;
+        private String postingAddressCity;
+        public PreferenceFragmentUserSettingsRequest(String firstname,
+                                                     String lastname,
+                                                     String email,
+                                                     String billingAddress,
+                                                     String billingAddressPostalCode,
+                                                     String billingAddressCity,
+                                                     String postingAddress,
+                                                     String postingAddressPostalCode,
+                                                     String postingAddressCity) {
+            this.firstname=firstname;
+            this.lastname=lastname;
+            this.email=email;
+            this.billingAddress=billingAddress;
+            this.billingAddressPostalCode=billingAddressPostalCode;
+            this.billingAddressCity=billingAddressCity;
+            this.postingAddress=postingAddress;
+            this.postingAddressPostalCode=postingAddressPostalCode;
+            this.postingAddressCity=postingAddressCity;
+        }
+    }
+
+    // This function is called when the fragment is switching between show and hide
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {// When switching to show
+            //Log.d("--- LicenseSetting ---", "[Status Info] change to show");
+            getUserInfo();
+        }else {// When switching to hide
+            //Log.d("--- LicenseSetting ---", "[Status Info] change to hide");
+            updateUserInfo();
+        }
     }
 }

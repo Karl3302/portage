@@ -1,18 +1,29 @@
 package com.zeprofile.application.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.zeprofile.application.MainPage;
 import com.zeprofile.application.R;
+import com.zeprofile.application.utils.ApiZeprofile;
+import com.zeprofile.application.utils.RetrofitBuilder;
+import com.zeprofile.application.utils.ZeProfileUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class FragmentDiscount extends Fragment {
     private RecyclerView mRecyclerView;
@@ -66,13 +77,12 @@ public class FragmentDiscount extends Fragment {
         button_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                /*
+                String fragName = PreferenceFragmentUserSettings.class.getSimpleName();
+                Log.d("--- test ---","[getSuperClass] superClass of "+fragName+" is "+ZeProfileUtils.getSuperClass(fragName));
+                */
             }
         });
     }
-
-
-
 
 }

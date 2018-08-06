@@ -25,6 +25,7 @@
             android:title="@string/text_firstNameTextField" />
         <EditTextPreference
             android:capitalize="words"
+            android:enabled="false"
             android:inputType="textCapWords"
             android:key="@string/key_preference_email"
             android:maxLines="1"
@@ -52,4 +53,14 @@
             android:selectAllOnFocus="true"
             android:title="@string/text_delivery_address" />
     </com.zeprofile.application.base.CustomPreferenceCategory>
+
+    <EditTextPreference
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:lines="2"
+        android:maxLines="4"
+        android:minLines="1"
+        android:scrollbars="vertical" />
 </PreferenceScreen>

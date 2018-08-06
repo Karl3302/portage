@@ -90,6 +90,7 @@ public class SignUp extends AppCompatActivity {
                                 }
                             }
                             public void onFailure(Call<SignUpResponse> call, Throwable t) {
+                                ZeProfileUtils.shortCenterToast(getApplicationContext(), getString(R.string.error_network));
                             }
                         });
                     }else {

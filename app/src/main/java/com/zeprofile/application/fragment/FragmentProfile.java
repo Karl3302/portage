@@ -72,7 +72,7 @@ public class FragmentProfile extends Fragment {
         mVisibilityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZeProfileUtils.loadMainFrame(getActivity(), PreferenceFragmentVisibility.class.getSimpleName());
+                ZeProfileUtils.loadMainFrame(getActivity(), PreferenceFragmentLicenseSetting.class.getSimpleName());
             }
         });
         mBankAccountBtn.setOnClickListener(new View.OnClickListener() {

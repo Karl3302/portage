@@ -25,9 +25,20 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
+import com.zeprofile.application.base.UserHobbyBean;
+import com.zeprofile.application.base.UserInfoBean;
 import com.zeprofile.application.fragment.FragmentDiscount;
 import com.zeprofile.application.fragment.FragmentProfile;
+import com.zeprofile.application.utils.ApiZeprofile;
+import com.zeprofile.application.utils.RetrofitBuilder;
 import com.zeprofile.application.utils.ZeProfileUtils;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainPage extends AppCompatActivity {
     // Components
@@ -59,7 +70,7 @@ public class MainPage extends AppCompatActivity {
     private static final String TOUCH_INTENT_SWIPE_RIGHT = "swipe_right";
 
     // Variables
-    private String email;
+    //private String email,token;
     private int mScreenWidth;
     private int mScreenHeight;
     private float mDownX;
@@ -82,19 +93,18 @@ public class MainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-        //  View decorView = getWindow().getDecorView();
-        //  decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-
-        /*mListener=new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
-
-            }
-        };
-        getFragmentManager().addOnBackStackChangedListener(mListener);*/
-
-        Log.d("--- LoadFragment ---","number of frags="+getFragmentManager().getFragments().size()+"fragment in container="+getFragmentManager().findFragmentById(R.id.mainPageFrameLayout));
-
+//        View decorView = getWindow().getDecorView();
+//        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//
+//        mListener=new FragmentManager.OnBackStackChangedListener() {
+//            @Override
+//            public void onBackStackChanged() {
+//
+//            }
+//        };
+//        getFragmentManager().addOnBackStackChangedListener(mListener);
+//
+//        Log.d("--- LoadFragment ---","number of frags="+getFragmentManager().getFragments().size()+"fragment in container="+getFragmentManager().findFragmentById(R.id.mainPageFrameLayout));
         initViews();
         initData();
         configViews(savedInstanceState);
@@ -117,59 +127,52 @@ public class MainPage extends AppCompatActivity {
         mMainPageFrameLayout = findViewById(R.id.mainPageFrameLayout);
 
         // Gesture
-        /*mGestureDetector = new GestureDetector(this);
-        mMainPageFrameLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View arg0, MotionEvent event) {
-                return mGestureDetector.onTouchEvent(event);
-            }
-        });*/
-
-        /*mGestureDetector = new GestureDetector(this);
-        mMainPageFrameLayout.setOnTouchListener(this);
-        mMainPageFrameLayout.setLongClickable(true);*/
-        /*
-        mGestureDetector = new GestureDetector(new GestureDetector.OnGestureListener() {
-                @Override
-                public boolean onDown(MotionEvent e) {
-                    return false;
-                }
-
-                @Override
-                public void onShowPress(MotionEvent e) {
-                }
-
-                @Override
-                public boolean onSingleTapUp(MotionEvent e) {
-                    return false;
-                }
-
-                @Override
-                public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-                    return false;
-                }
-
-                @Override
-                public void onLongPress(MotionEvent e) {
-                }
-
-                @Override
-                public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                //在滑动的方法里，进行手势滑动事件的判断
-                //e1代表手指按在屏幕上的X轴坐标点，e2代表手指离开屏幕上的X轴坐标点。
-                if (e1.getX() - e2.getX() < 0 && Math.abs((int) (e1.getX() - e2.getX())) > 30) {
-                    //向右滑动的判断，如果手指从左向右滑动，就走这个方法
-                    moveRight();
-                    return true;
-                } else if (e1.getX() - e2.getX() > 0 && Math.abs((int) (e1.getX() - e2.getX())) > 30) {
-                    //向左滑动的判断，如果手指从右向左滑动，就走这个方法
-                    moveLeft();
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        });*/
+//        mGestureDetector = new GestureDetector(this);
+//        mMainPageFrameLayout.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View arg0, MotionEvent event) {
+//                return mGestureDetector.onTouchEvent(event);
+//            }
+//        });
+//        mGestureDetector = new GestureDetector(this);
+//        mMainPageFrameLayout.setOnTouchListener(this);
+//        mMainPageFrameLayout.setLongClickable(true);
+//        mGestureDetector = new GestureDetector(new GestureDetector.OnGestureListener() {
+//                @Override
+//                public boolean onDown(MotionEvent e) {
+//                    return false;
+//                }
+//                @Override
+//                public void onShowPress(MotionEvent e) {
+//                }
+//                @Override
+//                public boolean onSingleTapUp(MotionEvent e) {
+//                    return false;
+//                }
+//                @Override
+//                public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+//                    return false;
+//                }
+//                @Override
+//                public void onLongPress(MotionEvent e) {
+//                }
+//                @Override
+//                public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+//                //在滑动的方法里，进行手势滑动事件的判断
+//                //e1代表手指按在屏幕上的X轴坐标点，e2代表手指离开屏幕上的X轴坐标点。
+//                if (e1.getX() - e2.getX() < 0 && Math.abs((int) (e1.getX() - e2.getX())) > 30) {
+//                    //向右滑动的判断，如果手指从左向右滑动，就走这个方法
+//                    moveRight();
+//                    return true;
+//                } else if (e1.getX() - e2.getX() > 0 && Math.abs((int) (e1.getX() - e2.getX())) > 30) {
+//                    //向左滑动的判断，如果手指从右向左滑动，就走这个方法
+//                    moveLeft();
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            }
+//        });
 
 //        //side navigation
 //        mDrawerLayout = (DrawerLayout) findViewById(R.id.main_menu_drawer_layout);
@@ -185,7 +188,23 @@ public class MainPage extends AppCompatActivity {
 
     public void initData() {
         // --- Get the userEmail transferred by the last activity ---
-        email = ZeProfileUtils.getStringFromLastActivity(this, "emailAddress");
+        //email = "test@zeprofile.fr";//ZeProfileUtils.getStringFromLastActivity(this, "emailAddress");
+        //token = ZeProfileUtils.getStringFromLastActivity(this, "token");
+        //Log.d("--- MainPage ---", "[Data Transfer] Token = "+token);
+//        Retrofit retrofit = RetrofitBuilder.getRetrofit();
+//        ApiZeprofile netService = retrofit.create(ApiZeprofile.class);
+//        Call<UserInfoBean> call = netService.getUserInfo("Bearer "+token);
+//        call.enqueue(new Callback<UserInfoBean>() {
+//            public void onResponse(Call<UserInfoBean> call, Response<UserInfoBean> response) {
+//                if (response.isSuccessful()) {
+//                    Log.d("--- MainPage ---", "[Network_getUserInfo] status code = " + response.code() + "\n raw = " + response.raw() +"\n email="+response.body().getEmail());
+//                } else {
+//                    Log.d("--- MainPage ---", "[Network_getUserInfo] status code = " + response.code() + "\n message = " + response.message() + "\n raw = " + response.raw());
+//                }
+//            }
+//            public void onFailure(Call<UserInfoBean> call, Throwable t) {
+//            }
+//        });
     }
 
     public void configViews(Bundle savedInstanceState) {
@@ -199,7 +218,7 @@ public class MainPage extends AppCompatActivity {
         // ---- Loading the Root Fragment ----
         if (savedInstanceState == null) { // Load the root fragment after the login activity
             Log.d("--- LoadFragment ---", "[MainPage] Loading the root fragment");
-            ZeProfileUtils.loadMainFrame(MainPage.this, FragmentProfile.class.getSimpleName());
+            ZeProfileUtils.loadMainFrame(MainPage.this, FragmentDiscount.class.getSimpleName());
         } else { // Reload the fragment after the SCREEN ORIENTATION has changed (for the title and back button, the view is maintained by fragment itself)
             //TODO 内存重启时调用的逻辑没写
             Log.d("--- LoadFragment ---", "[MainPage] Reload the fragment");
@@ -211,10 +230,10 @@ public class MainPage extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.leftTabBotNav: // Left Button : Profile
+                    case R.id.rightTabBotNav: // Right Button : Profile
                         ZeProfileUtils.loadMainFrame(MainPage.this, FragmentProfile.class.getSimpleName());
                         return true;
-                    case R.id.rightTabBotNav: // Right Button : Discount
+                    case R.id.leftTabBotNav: // Left Button : Discount
                         ZeProfileUtils.loadMainFrame(MainPage.this, FragmentDiscount.class.getSimpleName());
                         return true;
                     default:
@@ -327,12 +346,29 @@ public class MainPage extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 switch (mTouchIntent) {
                     case TOUCH_INTENT_SWIPE_LEFT:
-                        mMainPageBottomNavigationView.getMenu().getItem(1).setChecked(true);
-                        ZeProfileUtils.loadMainFrame(MainPage.this, FragmentDiscount.class.getSimpleName());
+                        // if currentFragment is mainFragment → switch to FragmentProfile (else do nothing)
+                        if(ZeProfileUtils.getSuperClass(ZeProfileUtils.getCurrentFragmentName())==null) {
+                            mMainPageBottomNavigationView.getMenu().getItem(1).setChecked(true);
+                            ZeProfileUtils.loadMainFrame(MainPage.this, FragmentProfile.class.getSimpleName());
+                        }
                         break;
                     case TOUCH_INTENT_SWIPE_RIGHT:
-                        mMainPageBottomNavigationView.getMenu().getItem(0).setChecked(true);
-                        ZeProfileUtils.loadMainFrame(MainPage.this, FragmentProfile.class.getSimpleName());
+                        String currentFragmentName = ZeProfileUtils.getCurrentFragmentName();
+                        // if currentFragment is subFragment → switch back to its superclass
+                        if(ZeProfileUtils.getSuperClass(currentFragmentName)!=null){
+                            String superClassName = ZeProfileUtils.getSuperClass(currentFragmentName);
+                            if(superClassName.equals(FragmentProfile.class.getSimpleName())) {
+                                mMainPageBottomNavigationView.getMenu().getItem(1).setChecked(true);
+                            }else {
+                                mMainPageBottomNavigationView.getMenu().getItem(0).setChecked(true);
+                            }
+                            ZeProfileUtils.loadMainFrame(MainPage.this, superClassName);
+
+                        }else {//if currentFragment is mainFragment → switch to FragmentDiscount
+                            mMainPageBottomNavigationView.getMenu().getItem(0).setChecked(true);
+                            ZeProfileUtils.loadMainFrame(MainPage.this, FragmentDiscount.class.getSimpleName());
+
+                        }
                         break;
                     default:
                         break;
@@ -356,12 +392,9 @@ public class MainPage extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         //getFragmentManager().removeOnBackStackChangedListener(mListener);
         //ZeProfileUtils.clearCurrentFragmentName();
-
     }
-
 //    @Override
 //    public void onBackPressed() {
 //        Log.d("--- LoadFragment ---","MainPage.onBackPressed()");

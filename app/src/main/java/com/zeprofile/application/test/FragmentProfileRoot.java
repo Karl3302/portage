@@ -14,8 +14,8 @@ import com.zeprofile.application.fragment.FragmentAbout;
 import com.zeprofile.application.fragment.FragmentBankAccount;
 import com.zeprofile.application.fragment.FragmentProfile;
 import com.zeprofile.application.fragment.FragmentPublicProfile;
+import com.zeprofile.application.fragment.PreferenceFragmentLicenseSetting;
 import com.zeprofile.application.fragment.PreferenceFragmentUserSettings;
-import com.zeprofile.application.fragment.PreferenceFragmentVisibility;
 import com.zeprofile.application.utils.ZeProfileUtils;
 
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class FragmentProfileRoot extends Fragment {
         listFragment = new ArrayList<>();
         listFragment.add(new FragmentProfile());
         listFragment.add(new FragmentPublicProfile());
-        listFragment.add(new PreferenceFragmentVisibility());
+        listFragment.add(new PreferenceFragmentLicenseSetting());
         listFragment.add(new FragmentBankAccount());
         listFragment.add(new PreferenceFragmentUserSettings());
         listFragment.add(new FragmentAbout());

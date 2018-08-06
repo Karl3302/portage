@@ -5,8 +5,6 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.animation.Interpolator;
 
-import com.zeprofile.application.base.CustomDurationScroller;
-
 import java.lang.reflect.Field;
 
 /**

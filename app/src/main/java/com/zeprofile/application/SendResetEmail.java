@@ -110,6 +110,7 @@ public class SendResetEmail extends AppCompatActivity {
                                 }
                             }
                             public void onFailure(Call<SendEmailResponse> call, Throwable t) {
+                                ZeProfileUtils.shortCenterToast(getApplicationContext(), getString(R.string.error_network));
                             }
                         });
                     }else {

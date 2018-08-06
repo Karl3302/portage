@@ -90,7 +90,7 @@ public class Login extends AppCompatActivity {
                                     // Clear password
                                     passwordTextField.setText(null);
                                     // Move to next activity: mon profile and transfer the email
-                                    ZeProfileUtils.moveToNextActivity(Login.this, MainPage.class, "emailAddress", email);
+                                    ZeProfileUtils.moveToNextActivity(Login.this, MainPage.class,"token", response.body().getToken()); //"emailAddress", email);
                                 }
                                 else{
                                     //Log.d("--- Network ---", "[API return] status code = "+ response.code()+"\n message = "+response.message()+"\n raw = "+response.raw());
@@ -98,6 +98,7 @@ public class Login extends AppCompatActivity {
                                 }
                             }
                             public void onFailure(Call<LoginResponse> call, Throwable t) {
+                                ZeProfileUtils.shortCenterToast(getApplicationContext(), getString(R.string.error_network));
                             }
                         });
                         /*早期的本地数据库版

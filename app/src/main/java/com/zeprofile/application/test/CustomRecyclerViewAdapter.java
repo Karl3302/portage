@@ -1,4 +1,4 @@
-package com.zeprofile.application.base;
+package com.zeprofile.application.test;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
